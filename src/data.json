@@ -1,7 +1,7 @@
 [
   {
     "name": "% DE SATURACION",
-    "price": 8
+    "price": 4
   },
   {
     "name": "ACIDO URICO",
@@ -25,7 +25,7 @@
   },
   {
     "name": "AMILASA",
-    "price": 12
+    "price": 6
   },
   {
     "name": "ANTI D.N.A",
@@ -41,7 +41,7 @@
   },
   {
     "name": "ANTIESTREPTOLISINA O",
-    "price": 12
+    "price": 8
   },
   {
     "name": "B.H.C.G. CUANTITATIVA",
@@ -121,7 +121,7 @@
   },
   {
     "name": "EX. HECES",
-    "price": 8
+    "price": 4
   },
   {
     "name": "F.S.H.",
@@ -157,7 +157,7 @@
   },
   {
     "name": "G.G.T",
-    "price": 8
+    "price": 6
   },
   {
     "name": "GLICEMIA",
@@ -209,7 +209,7 @@
   },
   {
     "name": "HIERRO",
-    "price": 8
+    "price": 10
   },
   {
     "name": "HIV 1+2 ELISA (4TA. GEN.)",
@@ -241,23 +241,23 @@
   },
   {
     "name": "LDH",
-    "price": 8
+    "price": 6
   },
   {
     "name": "LEUCOCITOS",
-    "price": 5
+    "price": 4
   },
   {
     "name": "DIFERENCIAL",
-    "price": 5
+    "price": 4
   },
   {
     "name": "LIPASA",
-    "price": 8
+    "price": 20
   },
   {
     "name": "MAGNESIO",
-    "price": 6
+    "price": 5
   },
   {
     "name": "MICROALBUMINURIA",
@@ -265,11 +265,11 @@
   },
   {
     "name": "ORINA",
-    "price": 8
+    "price": 4
   },
   {
     "name": "PCR CUANTITATIVA",
-    "price": 18
+    "price": 8
   },
   {
     "name": "PERFIL LIPIDICO",
@@ -301,7 +301,7 @@
   },
   {
     "name": "PROTEINURIA",
-    "price": 8
+    "price": 10
   },
   {
     "name": "PROTEOGRAMA",
@@ -309,7 +309,7 @@
   },
   {
     "name": "PRUEBA DE EMBARAZO CUALITATIVA",
-    "price": 8
+    "price": 7
   },
   {
     "name": "PRUEBA de IGRA PARA TUBERCULOSIS",
@@ -321,11 +321,11 @@
   },
   {
     "name": "REL. CALCIO/CREATININA",
-    "price": 8
+    "price": 9
   },
   {
-    "name": "RETICULOCITOS",
-    "price": 8
+    "name": "RETICULOCITO",
+    "price": 6
   },
   {
     "name": "SANGRE OCULTA (HECES)",
@@ -337,7 +337,7 @@
   },
   {
     "name": "SUDAM III (HECES)",
-    "price": 4
+    "price": 5
   },
   {
     "name": "TIEMPO DE SANGRIA",
@@ -393,7 +393,7 @@
   },
   {
     "name": "TOXO (IgG-IgM)",
-    "price": 18
+    "price": 30
   },
   {
     "name": "TRANSFERRINA",
@@ -417,4 +417,5 @@
   }
 
 ]
+
 
