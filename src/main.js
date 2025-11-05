@@ -14,7 +14,8 @@ function App() {
         throw new Error(`Unable to fetch. Reason: ${response.status}`);
       }
       const data = await response.json();
-      setTests(data);
+      const orderedData = data.sort((a, b) => a.name > b.name);
+      setTests(orderedData);
     };
     fetchData();
   }, [tests]);
@@ -100,11 +101,21 @@ function App() {
           null,
           React.createElement(
             "div",
-            { className: "flex" },
+            { className: "flex flex-row space-x-2" },
             React.createElement(
               "div",
-              { className: "p-3 bg-gray-200 rounded-xl text-lg font-bold flex-1" },
-              `Total: $${total}`
+              { className: "p-3 bg-gray-200 rounded-xl text-lg font-bold flex-1 flex" },
+              React.createElement(
+                "span",
+                null,
+                `Total: $${total}`,
+              ),
+              React.createElement("span", { className: "flex-grow" }),
+              React.createElement(
+                "span",
+                { className: "text-gray-500" },
+                `de ${selected.length} items`,
+              ),
             ),
             React.createElement(
               "button",
@@ -113,7 +124,7 @@ function App() {
                 type: "button",
                 onClick: (e) => setSelected([]),
               },
-              "clear"
+              "Limpiar"
             ),
           ),
           React.createElement(
