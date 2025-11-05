@@ -2,24 +2,51 @@ const { useState, useEffect } = React;
 
 const dataURL = "src/data.json";
 
-function fuzzyMatch(query, term) {
-  const maxDistance = 4;
-  const queryl = query.toLowerCase();
-  const terml = term.toLowerCase();
+const maxFuzzyDistance = 4;
 
-  let previousIndex = 0;
-  let fromIndex = 0;
+function fuzzyMatchCheckDistance(startIndex, query, term) {
+  let first = true;
+  let fromIndex = startIndex;
+  let previousIndex = startIndex;
 
-  for (const c of queryl) {
-    fromIndex = terml.indexOf(c, previousIndex);
+  for (const c of query) {
+    if (first) {
+      first = false;
+      continue;
+    }
+    fromIndex = term.indexOf(c, previousIndex);
     const distance = fromIndex - previousIndex;
-    if (fromIndex === -1 || distance > maxDistance) {
+    if (fromIndex === -1 || distance > maxFuzzyDistance) {
       return false;
     }
-    previousIndex = fromIndex;
+    previousIndex = fromIndex + 1;
   }
 
   return true;
+}
+
+function fuzzyMatch(query, term) {
+  if (query === '') {
+    return true;
+  }
+
+  const queryl = query.toLowerCase();
+  const terml = term.toLowerCase();
+
+  let fromIndex = 0;
+
+  while (true) {
+    fromIndex = terml.indexOf(queryl[0], fromIndex);
+    if (fromIndex === -1) {
+      return false;
+    }
+    if (fuzzyMatchCheckDistance(fromIndex, queryl, terml)) {
+      return true;
+    }
+    fromIndex += 1;
+  }
+
+  throw new Error("Reached unreachable");
 }
 
 function App() {
@@ -38,7 +65,7 @@ function App() {
       setTests(orderedData);
     };
     fetchData();
-  }, [tests]);
+  }, []);
 
   const filtered = tests.filter(
     (t) =>
