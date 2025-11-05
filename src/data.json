@@ -216,15 +216,11 @@
     "price": 15
   },
   {
-    "name": "INMUNOGLOBULINA (IGE)",
-    "price": 18
-  },
-  {
     "name": "INMUNOGLOBULINA A",
     "price": 18
   },
   {
-    "name": "INMUNOGLOBULINA E",
+    "name": "INMUNOGLOBULINA E (IGE)",
     "price": 18
   },
   {
@@ -417,5 +413,6 @@
   }
 
 ]
+
 
 
