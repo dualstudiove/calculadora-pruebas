@@ -63,7 +63,6 @@ function App() {
             React.createElement(
               "div",
               { key: test.name, className: "flex justify-between items-center border p-2 rounded-xl" },
-              // React.createElement("span", null, `${test.name} - $${test.price}`),
               testDisplay(test),
               React.createElement(
                 "button",
@@ -91,7 +90,6 @@ function App() {
             React.createElement(
               "div",
               { key: test.name, className: "flex justify-between items-center border p-2 rounded-xl" },
-              // React.createElement("span", null, `${test.name} - $${test.price}`),
               testDisplay(test),
               React.createElement(
                 "button",
@@ -113,7 +111,7 @@ function App() {
             { className: "flex flex-row space-x-2" },
             React.createElement(
               "div",
-              { className: "p-3 bg-gray-200 rounded-xl text-lg font-bold flex-1 flex justify-between" },
+              { className: "p-3 bg-gray-200 rounded-xl text-lg font-bold flex-1 flex justify-between items-center" },
               React.createElement("span", null, `Total: REF ${total}`),
               React.createElement("span", { className: "text-base text-gray-500" }, `${selected.length} items`),
             ),
