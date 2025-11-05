@@ -2,6 +2,21 @@ const { useState, useEffect } = React;
 
 const dataURL = "src/data.json";
 
+function fuzzyMatch(query, term) {
+  const queryl = query.toLowerCase();
+  const terml = term.toLowerCase();
+  let fromIndex = 0;
+
+  for (const c of queryl) {
+    fromIndex = terml.indexOf(c, fromIndex);
+    if (fromIndex === -1) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
 function App() {
   const [tests, setTests] = useState([]);
   const [search, setSearch] = useState("");
@@ -22,7 +37,7 @@ function App() {
 
   const filtered = tests.filter(
     (t) =>
-      t.name.toLowerCase().includes(search.toLowerCase()) &&
+      fuzzyMatch(search, t.name) &&
       !selected.find((s) => s.name === t.name)
   );
 
