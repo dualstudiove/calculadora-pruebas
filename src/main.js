@@ -2,15 +2,6 @@ import  tests  from './data.json';
 
 const { useState } = React;
 
-// const tests = [
-//   { name: "Hemograma", price: 10 },
-//   { name: "Glucosa", price: 8 },
-//   { name: "Perfil Lipídico", price: 20 },
-//   { name: "Tiroideas", price: 25 }, 
-//   { name: "Urea", price: 7 }, 
-//   { name: "Creatinina", price: 9 }
-// ]; 
-//
 function App() {
   const [search, setSearch] = useState("");
   const [selected, setSelected] = useState([]);
@@ -35,7 +26,7 @@ function App() {
       // IZQUIERDA
       React.createElement(
         "div",
-        { className: "bg-white shadow rounded-2xl p-4 flex flex-col" },
+        { className: "bg-white shadow rounded-2xl p-4 flex flex-col con-scroll" },
         React.createElement("h2", { className: "text-xl font-bold mb-3" }, "Lista de pruebas"),
         React.createElement("input", {
           type: "text",
@@ -68,7 +59,7 @@ function App() {
       // DERECHA
       React.createElement(
         "div",
-        { className: "bg-white shadow rounded-2xl p-4 flex flex-col justify-between" },
+        { className: "bg-white shadow rounded-2xl p-4 flex flex-col justify-between con-scroll" },
 
         React.createElement(
           "div",
@@ -94,13 +85,30 @@ function App() {
         React.createElement(
           "div",
           null,
-          React.createElement("div", { className: "p-3 bg-gray-200 rounded-xl text-lg font-bold" }, `Total: $${total}`),
+          React.createElement(
+            "div",
+            { className: "flex" },
+            React.createElement(
+              "div",
+              { className: "p-3 bg-gray-200 rounded-xl text-lg font-bold flex-1" },
+              `Total: $${total}`
+            ),
+            React.createElement(
+              "button",
+              {
+                className: "bg-blue-500 text-white px-3 py-1 rounded-xl w-24",
+                type: "button",
+                onClick: (e) => setSelected([]),
+              },
+              "clear"
+            ),
+          ),
           React.createElement(
             "p",
             { className: "text-xs text-gray-500 mt-1" },
-            "Precios actualizados el martes, 04/11/25 23:09"
-          )
-        )
+            "Precios actualizados el viernes, 24/10/25"
+          ),
+        ),
       )
     )
   );
