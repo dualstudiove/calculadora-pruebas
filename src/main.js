@@ -1,10 +1,23 @@
-import  tests  from './data.json';
+const { useState, useEffect } = React;
 
-const { useState } = React;
+const dataURL = "src/data.json";
 
 function App() {
+  const [tests, setTests] = useState([]);
   const [search, setSearch] = useState("");
   const [selected, setSelected] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(dataURL);
+      if (!response.ok) {
+        throw new Error(`Unable to fetch. Reason: ${response.status}`);
+      }
+      const data = await response.json();
+      setTests(data);
+    };
+    fetchData();
+  }, [tests]);
 
   const filtered = tests.filter(
     (t) =>
