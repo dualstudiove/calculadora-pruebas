@@ -8,7 +8,7 @@ function App() {
   const [selected, setSelected] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
+    async function fetchData() {
       const response = await fetch(dataURL);
       if (!response.ok) {
         throw new Error(`Unable to fetch. Reason: ${response.status}`);
