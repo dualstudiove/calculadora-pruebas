@@ -96,8 +96,8 @@
     "price": 4
   },
   {
-    "name": "CULTIVOS- UROCULTIVO-HEMOCUL.",
-    "price": 25
+    "name": "CULTIVOS (UROCULTIVO, HEMOCULTIVO, ETC)",
+    "price": 30
   },
   {
     "name": "DENGUE (IgG-IgM)",
@@ -188,7 +188,15 @@
     "price": 8
   },
   {
-    "name": "HEMOCULTIVO/CULT LIQ/COPRO",
+    "name": "HEMOCULTIVO",
+    "price": 25
+  },
+  {
+    "name": "CULT LIQ",
+    "price": 25
+  },
+  {
+    "name": "COPROCULTIVO",
     "price": 25
   },
   {
@@ -340,7 +348,11 @@
     "price": 6
   },
   {
-    "name": "T.P / T.P.T",
+    "name": "T.P.T",
+    "price": 5
+  },
+  {
+    "name": "T.P",
     "price": 5
   },
   {
@@ -353,10 +365,6 @@
   },
   {
     "name": "T3 TOTAL",
-    "price": 18
-  },
-  {
-    "name": "T3L/ T4L/TSH",
     "price": 18
   },
   {
@@ -399,4 +407,5 @@
     "name": "VDRL",
     "price": 8
   }
+
 ]
