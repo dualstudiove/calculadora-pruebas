@@ -1,102 +1,402 @@
 [
-  { "name": "CELULAS L.E.", "price": 30 },
-  { "name": "AGLUTININAS ANTI RH", "price": 25 },
-  { "name": "COOMBS INDIRECTO", "price": 25 },
-  { "name": "FENOMENO LE", "price": 30 },
-  { "name": "COOMBS DIRECTO", "price": 25 },
-  { "name": "TRANSFERRINA", "price": 15 },
-  { "name": "ANTICUERPOS TOXOPLASMICOS (HAI)", "price": 18 },
-  { "name": "AGLUTININAS FEBRILES", "price": 25 },
-  { "name": "ANTICUERPOS ANTINUCLEARES", "price": 40 },
-  { "name": "EPSTEIN BARR IgG-IgM", "price": 30 },
-  { "name": "CITOMEGALOVIRUS IgG-IgM", "price": 30 },
-  { "name": "HELICOBACTER PYLORI IgG-IgM", "price": 36 },
-  { "name": "INMUNOGLOBULINA A", "price": 18 },
-  { "name": "INMUNOGLOBULINA E", "price": 18 },
-  { "name": "INMUNOGLOBULINA G", "price": 18 },
-  { "name": "INMUNOGLOBULINA M", "price": 18 },
-  { "name": "HEPATITIS A IgG", "price": 18 },
-  { "name": "HEPATITIS A IgM", "price": 18 },
-  { "name": "ANTI D.N.A", "price": 40 },
-  { "name": "CHAGAS", "price": 18 },
-  { "name": "HELICOBACTER PYLORI CUALITATIVO", "price": 20 },
-  { "name": "FOSFOLIPIDOS IgG-IgM", "price": 60 },
-  { "name": "CARDIOLIPINA IgG-IgM", "price": 60 },
-  { "name": "ACS. PARA TUBERCULOSIS", "price": 50 },
-  { "name": "PERFIL TORCH (CMV, RUBEOLA, HERPES, TOXO)", "price": 130 },
-  { "name": "PRUEBA de IGRA PARA TUBERCULOSIS", "price": 60 },
-  { "name": "B.H.C.G. CUANTITATIVA", "price": 30 },
-  { "name": "F.S.H.", "price": 18 },
-  { "name": "L.H", "price": 18 },
-  { "name": "ESTRADIOL", "price": 18 },
-  { "name": "PROLACTINA", "price": 18 },
-  { "name": "PROGESTERONA", "price": 18 },
-  { "name": "TESTOSTERONA LIBRE", "price": 20 },
-  { "name": "T3 LIBRE", "price": 18 },
-  { "name": "TESTOSTERONA TOTAL", "price": 18 },
-  { "name": "T4 LIBRE", "price": 18 },
-  { "name": "T3 TOTAL", "price": 18 },
-  { "name": "T4 TOTAL", "price": 18 },
-  { "name": "T.S.H", "price": 18 },
-  { "name": "PERFIL TIROIDEO", "price": 50 },
-  { "name": "DHEA-S", "price": 35 },
-  { "name": "HEMATOLOGIA", "price": 8 },
-  { "name": "FROTIS DE SANGRE PERIFERICA", "price": 8 },
-  { "name": "V.S.G", "price": 8 },
-  { "name": "T.P / T.P.T", "price": 5 },
-  { "name": "FIBRINOGENO", "price": 6 },
-  { "name": "T. SANGRIA / T.COAGULACION", "price": 5 },
-  { "name": "GLICEMIA", "price": 4 },
-  { "name": "UREA", "price": 4 },
-  { "name": "CREATININA", "price": 4 },
-  { "name": "COLESTEROL", "price": 4 },
-  { "name": "TRIGLICERIDOS", "price": 4 },
-  { "name": "PERFIL LIPIDICO", "price": 12 },
-  { "name": "GRUPO SANGUINEO", "price": 8 },
-  { "name": "ACIDO URICO", "price": 4 },
-  { "name": "LDH", "price": 8 },
-  { "name": "PROTEOGRAMA", "price": 8 },
-  { "name": "BILIRRUBINA", "price": 8 },
-  { "name": "EX. HECES", "price": 8 },
-  { "name": "PH y AZUCARES RED.", "price": 8 },
-  { "name": "LEUCOCITOS Y DIFERENCIAL", "price": 5 },
-  { "name": "SUDAM III (HECES)", "price": 4 },
-  { "name": "ORINA", "price": 8 },
-  { "name": "FOSFATASA ALCALINA", "price": 6 },
-  { "name": "G.G.T", "price": 8 },
-  { "name": "REL. CALCIO/CREATININA", "price": 8 },
-  { "name": "CULTIVOS- UROCULTIVO-HEMOCUL.", "price": 25 },
-  { "name": "REL. ACIDO URICO/ CREATININA", "price": 8 },
-  { "name": "PCR CUANTITATIVA", "price": 18 },
-  { "name": "RETICULOCITOS", "price": 8 },
-  { "name": "VDRL", "price": 8 },
-  { "name": "CCP. CITRULINADO", "price": 55 },
-  { "name": "CALCIO", "price": 5 },
-  { "name": "FOSFORO", "price": 5 },
-  { "name": "MAGNESIO", "price": 6 },
-  { "name": "SODIO", "price": 6 },
-  { "name": "POTASIO", "price": 6 },
-  { "name": "CLORO", "price": 6 },
-  { "name": "INMUNOGLOBULINA (IGE)", "price": 18 },
-  { "name": "PRUEBA DE EMBARAZO CUALITATIVA", "price": 8 },
-  { "name": "FACTOR REUMATOIDEO LATEX", "price": 12 },
-  { "name": "T.G.O", "price": 6 },
-  { "name": "T.G.P", "price": 6 },
-  { "name": "HEMOCULTIVO/CULT LIQ/COPRO", "price": 25 },
-  { "name": "AG. HELICOBACTER PILORY (HECES)", "price": 18 },
-  { "name": "GLICEMIA POST PANDRIAL", "price": 4 },
-  { "name": "HIERRO", "price": 8 },
-  { "name": "MICROALBUMINURIA", "price": 12 },
-  { "name": "% DE SATURACION", "price": 8 },
-  { "name": "SANGRE OCULTA (HECES)", "price": 8 },
-  { "name": "LIPASA", "price": 8 },
-  { "name": "HB. GLUCOSILADA A (1C)", "price": 18 },
-  { "name": "ANTIESTREPTOLISINA O", "price": 12 },
-  { "name": "HIV 1+2 ELISA (4TA. GEN.)", "price": 15 },
-  { "name": "DEP. DE CREATININA EN 24 H.", "price": 18 },
-  { "name": "PROTEINURIA", "price": 8 },
-  { "name": "DENGUE (IgG-IgM)", "price": 30 },
-  { "name": "TOXO (IgG-IgM)", "price": 18 },
-  { "name": "AMILASA", "price": 12 },
-  { "name": "T3L/ T4L/TSH", "price": 18 }
+  {
+    "name": "% DE SATURACION",
+    "price": 8
+  },
+  {
+    "name": "ACIDO URICO",
+    "price": 4
+  },
+  {
+    "name": "ACS. PARA TUBERCULOSIS",
+    "price": 50
+  },
+  {
+    "name": "AG. HELICOBACTER PILORY (HECES)",
+    "price": 18
+  },
+  {
+    "name": "AGLUTININAS ANTI RH",
+    "price": 25
+  },
+  {
+    "name": "AGLUTININAS FEBRILES",
+    "price": 25
+  },
+  {
+    "name": "AMILASA",
+    "price": 12
+  },
+  {
+    "name": "ANTI D.N.A",
+    "price": 40
+  },
+  {
+    "name": "ANTICUERPOS ANTINUCLEARES",
+    "price": 40
+  },
+  {
+    "name": "ANTICUERPOS TOXOPLASMICOS (HAI)",
+    "price": 18
+  },
+  {
+    "name": "ANTIESTREPTOLISINA O",
+    "price": 12
+  },
+  {
+    "name": "B.H.C.G. CUANTITATIVA",
+    "price": 30
+  },
+  {
+    "name": "BILIRRUBINA",
+    "price": 8
+  },
+  {
+    "name": "CALCIO",
+    "price": 5
+  },
+  {
+    "name": "CARDIOLIPINA IgG-IgM",
+    "price": 60
+  },
+  {
+    "name": "CCP. CITRULINADO",
+    "price": 55
+  },
+  {
+    "name": "CELULAS L.E.",
+    "price": 30
+  },
+  {
+    "name": "CHAGAS",
+    "price": 18
+  },
+  {
+    "name": "CITOMEGALOVIRUS IgG-IgM",
+    "price": 30
+  },
+  {
+    "name": "CLORO",
+    "price": 6
+  },
+  {
+    "name": "COLESTEROL",
+    "price": 4
+  },
+  {
+    "name": "COOMBS DIRECTO",
+    "price": 25
+  },
+  {
+    "name": "COOMBS INDIRECTO",
+    "price": 25
+  },
+  {
+    "name": "CREATININA",
+    "price": 4
+  },
+  {
+    "name": "CULTIVOS- UROCULTIVO-HEMOCUL.",
+    "price": 25
+  },
+  {
+    "name": "DENGUE (IgG-IgM)",
+    "price": 30
+  },
+  {
+    "name": "DEP. DE CREATININA EN 24 H.",
+    "price": 18
+  },
+  {
+    "name": "DHEA-S",
+    "price": 35
+  },
+  {
+    "name": "EPSTEIN BARR IgG-IgM",
+    "price": 30
+  },
+  {
+    "name": "ESTRADIOL",
+    "price": 18
+  },
+  {
+    "name": "EX. HECES",
+    "price": 8
+  },
+  {
+    "name": "F.S.H.",
+    "price": 18
+  },
+  {
+    "name": "FACTOR REUMATOIDEO LATEX",
+    "price": 12
+  },
+  {
+    "name": "FENOMENO LE",
+    "price": 30
+  },
+  {
+    "name": "FIBRINOGENO",
+    "price": 6
+  },
+  {
+    "name": "FOSFATASA ALCALINA",
+    "price": 6
+  },
+  {
+    "name": "FOSFOLIPIDOS IgG-IgM",
+    "price": 60
+  },
+  {
+    "name": "FOSFORO",
+    "price": 5
+  },
+  {
+    "name": "FROTIS DE SANGRE PERIFERICA",
+    "price": 8
+  },
+  {
+    "name": "G.G.T",
+    "price": 8
+  },
+  {
+    "name": "GLICEMIA",
+    "price": 4
+  },
+  {
+    "name": "GLICEMIA POST PANDRIAL",
+    "price": 4
+  },
+  {
+    "name": "GRUPO SANGUINEO",
+    "price": 8
+  },
+  {
+    "name": "HB. GLUCOSILADA A (1C)",
+    "price": 18
+  },
+  {
+    "name": "HELICOBACTER PYLORI CUALITATIVO",
+    "price": 20
+  },
+  {
+    "name": "HELICOBACTER PYLORI IgG-IgM",
+    "price": 36
+  },
+  {
+    "name": "HEMATOLOGIA",
+    "price": 8
+  },
+  {
+    "name": "HEMOCULTIVO/CULT LIQ/COPRO",
+    "price": 25
+  },
+  {
+    "name": "HEPATITIS A IgG",
+    "price": 18
+  },
+  {
+    "name": "HEPATITIS A IgM",
+    "price": 18
+  },
+  {
+    "name": "HIERRO",
+    "price": 8
+  },
+  {
+    "name": "HIV 1+2 ELISA (4TA. GEN.)",
+    "price": 15
+  },
+  {
+    "name": "INMUNOGLOBULINA (IGE)",
+    "price": 18
+  },
+  {
+    "name": "INMUNOGLOBULINA A",
+    "price": 18
+  },
+  {
+    "name": "INMUNOGLOBULINA E",
+    "price": 18
+  },
+  {
+    "name": "INMUNOGLOBULINA G",
+    "price": 18
+  },
+  {
+    "name": "INMUNOGLOBULINA M",
+    "price": 18
+  },
+  {
+    "name": "L.H",
+    "price": 18
+  },
+  {
+    "name": "LDH",
+    "price": 8
+  },
+  {
+    "name": "LEUCOCITOS Y DIFERENCIAL",
+    "price": 5
+  },
+  {
+    "name": "LIPASA",
+    "price": 8
+  },
+  {
+    "name": "MAGNESIO",
+    "price": 6
+  },
+  {
+    "name": "MICROALBUMINURIA",
+    "price": 12
+  },
+  {
+    "name": "ORINA",
+    "price": 8
+  },
+  {
+    "name": "PCR CUANTITATIVA",
+    "price": 18
+  },
+  {
+    "name": "PERFIL LIPIDICO",
+    "price": 12
+  },
+  {
+    "name": "PERFIL TIROIDEO",
+    "price": 50
+  },
+  {
+    "name": "PERFIL TORCH (CMV, RUBEOLA, HERPES, TOXO)",
+    "price": 130
+  },
+  {
+    "name": "PH y AZUCARES RED.",
+    "price": 8
+  },
+  {
+    "name": "POTASIO",
+    "price": 6
+  },
+  {
+    "name": "PROGESTERONA",
+    "price": 18
+  },
+  {
+    "name": "PROLACTINA",
+    "price": 18
+  },
+  {
+    "name": "PROTEINURIA",
+    "price": 8
+  },
+  {
+    "name": "PROTEOGRAMA",
+    "price": 8
+  },
+  {
+    "name": "PRUEBA DE EMBARAZO CUALITATIVA",
+    "price": 8
+  },
+  {
+    "name": "PRUEBA de IGRA PARA TUBERCULOSIS",
+    "price": 60
+  },
+  {
+    "name": "REL. ACIDO URICO/ CREATININA",
+    "price": 8
+  },
+  {
+    "name": "REL. CALCIO/CREATININA",
+    "price": 8
+  },
+  {
+    "name": "RETICULOCITOS",
+    "price": 8
+  },
+  {
+    "name": "SANGRE OCULTA (HECES)",
+    "price": 8
+  },
+  {
+    "name": "SODIO",
+    "price": 6
+  },
+  {
+    "name": "SUDAM III (HECES)",
+    "price": 4
+  },
+  {
+    "name": "T. SANGRIA / T.COAGULACION",
+    "price": 5
+  },
+  {
+    "name": "T.G.O",
+    "price": 6
+  },
+  {
+    "name": "T.G.P",
+    "price": 6
+  },
+  {
+    "name": "T.P / T.P.T",
+    "price": 5
+  },
+  {
+    "name": "T.S.H",
+    "price": 18
+  },
+  {
+    "name": "T3 LIBRE",
+    "price": 18
+  },
+  {
+    "name": "T3 TOTAL",
+    "price": 18
+  },
+  {
+    "name": "T3L/ T4L/TSH",
+    "price": 18
+  },
+  {
+    "name": "T4 LIBRE",
+    "price": 18
+  },
+  {
+    "name": "T4 TOTAL",
+    "price": 18
+  },
+  {
+    "name": "TESTOSTERONA LIBRE",
+    "price": 20
+  },
+  {
+    "name": "TESTOSTERONA TOTAL",
+    "price": 18
+  },
+  {
+    "name": "TOXO (IgG-IgM)",
+    "price": 18
+  },
+  {
+    "name": "TRANSFERRINA",
+    "price": 15
+  },
+  {
+    "name": "TRIGLICERIDOS",
+    "price": 4
+  },
+  {
+    "name": "UREA",
+    "price": 4
+  },
+  {
+    "name": "V.S.G",
+    "price": 8
+  },
+  {
+    "name": "VDRL",
+    "price": 8
+  }
 ]
