@@ -3,15 +3,20 @@ const { useState, useEffect } = React;
 const dataURL = "src/data.json";
 
 function fuzzyMatch(query, term) {
+  const maxDistance = 4;
   const queryl = query.toLowerCase();
   const terml = term.toLowerCase();
+
+  let previousIndex = 0;
   let fromIndex = 0;
 
   for (const c of queryl) {
-    fromIndex = terml.indexOf(c, fromIndex);
-    if (fromIndex === -1) {
+    fromIndex = terml.indexOf(c, previousIndex);
+    const distance = fromIndex - previousIndex;
+    if (fromIndex === -1 || distance > maxDistance) {
       return false;
     }
+    previousIndex = fromIndex;
   }
 
   return true;
