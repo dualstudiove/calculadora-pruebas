@@ -184,7 +184,7 @@
     "price": 36
   },
   {
-    "name": "HEMATOLOGIA",
+    "name": "HEMATOLOGIA COMPLETA",
     "price": 8
   },
   {
@@ -244,7 +244,11 @@
     "price": 8
   },
   {
-    "name": "LEUCOCITOS Y DIFERENCIAL",
+    "name": "LEUCOCITOS",
+    "price": 5
+  },
+  {
+    "name": "DIFERENCIAL",
     "price": 5
   },
   {
@@ -312,7 +316,7 @@
     "price": 60
   },
   {
-    "name": "REL. ACIDO URICO/ CREATININA",
+    "name": "REL. ACIDO URICO/CREATININA",
     "price": 8
   },
   {
@@ -336,7 +340,11 @@
     "price": 4
   },
   {
-    "name": "T. SANGRIA / T.COAGULACION",
+    "name": "TIEMPO DE SANGRIA",
+    "price": 5
+  },
+  {
+    "name": "TIEMPO DE COAGULACION",
     "price": 5
   },
   {
@@ -409,3 +417,4 @@
   }
 
 ]
+
