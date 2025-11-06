@@ -25,28 +25,37 @@ function fuzzyMatchCheckDistance(startIndex, query, term) {
   return true;
 }
 
-function fuzzyMatch(query, term) {
-  if (query === '') {
-    return true;
-  }
-
-  const queryl = query.toLowerCase();
-  const terml = term.toLowerCase();
-
+function fuzzyMatchString(query, term) {
   let fromIndex = 0;
 
   while (true) {
-    fromIndex = terml.indexOf(queryl[0], fromIndex);
+    fromIndex = term.indexOf(query[0], fromIndex);
     if (fromIndex === -1) {
       return false;
     }
-    if (fuzzyMatchCheckDistance(fromIndex, queryl, terml)) {
+    if (fuzzyMatchCheckDistance(fromIndex, query, term)) {
       return true;
     }
     fromIndex += 1;
   }
 
   throw new Error("Reached unreachable");
+}
+
+function fuzzyMatchTest(query, test) {
+  if (query === '') {
+    return true;
+  }
+
+  const queryl = query.toLowerCase();
+
+  if (fuzzyMatchString(queryl, test.name.toLowerCase())) {
+    return true;
+  }
+
+  return test.aliases.some(
+    (alias) => fuzzyMatchString(queryl, alias.toLowerCase())
+  );
 }
 
 function App() {
@@ -69,7 +78,7 @@ function App() {
 
   const filtered = tests.filter(
     (t) =>
-      fuzzyMatch(search, t.name) &&
+      fuzzyMatchTest(search, t) &&
       !selected.find((s) => s.name === t.name)
   );
 
@@ -81,8 +90,16 @@ function App() {
 
   const testDisplay = (test) => React.createElement(
     "span",
-    { className: "flex-grow flex pe-3 justify-between" },
-    React.createElement("span", null, `${test.name}`),
+    { className: "flex-grow flex pe-3 justify-between items-center" },
+    React.createElement(
+      "div",
+      { className: "flex flex-col" },
+      React.createElement("span", null, `${test.name}`),
+      test.aliases.length > 0 ? React.createElement(
+        "span",
+        { className: "ps-2 text-gray-500" },
+        `Aliases: ${test.aliases.join(", ")}`) : null,
+    ),
     React.createElement("span", { className: "font-bold" }, `REF ${test.price}`),
   );
 
