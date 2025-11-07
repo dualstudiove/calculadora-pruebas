@@ -98,7 +98,7 @@ function App() {
       test.aliases.length > 0 ? React.createElement(
         "span",
         { className: "ps-2 text-gray-500" },
-        `Aliases: ${test.aliases.join(", ")}`) : null,
+        `También llamada: ${test.aliases.join(", ")}`) : null,
     ),
     React.createElement("span", { className: "font-bold" }, `REF ${test.price}`),
   );
