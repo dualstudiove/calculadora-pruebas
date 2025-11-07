@@ -148,11 +148,11 @@ function App() {
               React.createElement(
                 "button",
                 {
-                  className: "bg-blue-500 text-white px-3 py-1 rounded-xl",
+                  className: "bg-blue-500 font-black text-lg text-white px-3 py-1 rounded-xl",
                   tabIndex: -1,
                   onClick: () => addTest(test),
                 },
-                "Agregar"
+                "+"
               )
             )
           )
@@ -192,11 +192,11 @@ function App() {
               React.createElement(
                 "button",
                 {
-                  className: "bg-red-500 text-white px-3 py-1 rounded-xl",
+                  className: "bg-red-500 font-black text-lg text-white px-3 py-1 rounded-xl",
                   tabIndex: -1,
                   onClick: () => removeTest(test),
                 },
-                "Quitar"
+                "\u{2013}", // &ndash;
               )
             )
           )
@@ -209,19 +209,19 @@ function App() {
             "div",
             { className: "flex flex-row space-x-2" },
             React.createElement(
-              "div",
-              { className: "p-3 bg-gray-200 rounded-xl text-lg font-bold flex-1 flex justify-between items-center" },
-              React.createElement("span", null, `Total: REF ${total}`),
-              React.createElement("span", { className: "text-base text-gray-500" }, `${selected.length} items`),
-            ),
-            React.createElement(
               "button",
               {
-                className: "bg-blue-500 text-white px-3 py-1 rounded-xl w-24",
+                className: "bg-blue-500 font-bold text-white px-3 py-1 rounded-xl",
                 type: "button",
                 onClick: (e) => setSelected([]),
               },
-              "Limpiar"
+              `Limpiar (${selected.length})`
+            ),
+            React.createElement(
+              "div",
+              { className: "p-3 bg-gray-200 rounded-xl text-lg font-bold flex-1 flex justify-between items-center" },
+              React.createElement("span", null, `Total:`),
+              React.createElement("span", null, `REF ${total}`),
             ),
           ),
           React.createElement(
