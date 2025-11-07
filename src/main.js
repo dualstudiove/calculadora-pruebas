@@ -115,23 +115,41 @@ function App() {
         React.createElement("h2", { className: "text-xl font-bold mb-3" }, "Lista de pruebas"),
         React.createElement("input", {
           type: "text",
+          id: "search-box",
           className: "w-full border p-2 rounded-xl mb-4",
-          placeholder: "Buscar prueba",
+          placeholder: "Buscar prueba [s]",
           value: search,
           onChange: (e) => setSearch(e.target.value),
         }),
         React.createElement(
           "div",
-          { className: "space-y-2 h-full overflow-y-auto" },
+          { className: "space-y-2 h-full p-2 overflow-y-auto" },
           filtered.map((test) =>
             React.createElement(
               "div",
-              { key: test.name, className: "flex justify-between items-center border p-2 rounded-xl" },
+              {
+                key: test.name,
+                tabIndex: 0,
+                className: "focusable-left flex justify-between items-center border p-2 rounded-xl focus:outline focus:outline-2 focus:outline-indigo-500",
+                onKeyDown: (ev) => {
+                  switch(ev.key) {
+                    case "Enter":
+                      addTest(test);
+                      const next_target = ev.currentTarget.nextSibling;
+                      if (next_target !== null) {
+                        next_target.focus();
+                      }
+                      ev.preventDefault();
+                      break;
+                  }
+                },
+              },
               testDisplay(test),
               React.createElement(
                 "button",
                 {
                   className: "bg-blue-500 text-white px-3 py-1 rounded-xl",
+                  tabIndex: -1,
                   onClick: () => addTest(test),
                 },
                 "Agregar"
@@ -148,17 +166,34 @@ function App() {
 
         React.createElement(
           "div",
-          { className: "space-y-2 overflow-y-auto mb-4" },
+          { className: "space-y-2 overflow-y-auto p-2 mb-4" },
           React.createElement("h2", { className: "text-xl font-bold mb-3" }, "Calculadora"),
           selected.map((test) =>
             React.createElement(
               "div",
-              { key: test.name, className: "flex justify-between items-center border p-2 rounded-xl" },
+              {
+                key: test.name,
+                tabIndex: 0,
+                className: "focusable-right flex justify-between items-center border p-2 rounded-xl focus:outline focus:outline-2 focus:outline-red-500",
+                onKeyDown: (ev) => {
+                  switch(ev.key) {
+                    case "Enter":
+                      removeTest(test);
+                      const next_target = ev.currentTarget.nextSibling;
+                      if (next_target !== null) {
+                        next_target.focus();
+                      }
+                      ev.preventDefault();
+                      break;
+                  }
+                },
+              },
               testDisplay(test),
               React.createElement(
                 "button",
                 {
                   className: "bg-red-500 text-white px-3 py-1 rounded-xl",
+                  tabIndex: -1,
                   onClick: () => removeTest(test),
                 },
                 "Quitar"
@@ -201,3 +236,50 @@ function App() {
 }
 
 ReactDOM.createRoot(document.getElementById("root")).render(React.createElement(App));
+
+function isFocusable() {
+  const clss = document.activeElement.classList;
+  return clss.contains("focusable-left") || clss.contains("focusable-right");
+}
+
+function niceFocus(element) {
+  element.focus({preventScroll: true});
+  element.scrollIntoView({ behavior: "smooth" });
+}
+
+document.addEventListener("keydown", (ev) => {
+  switch (ev.key) {
+    case "s":
+      const search_box = document.querySelector("#search-box");
+      if (document.activeElement !== search_box) {
+        search_box.focus();
+        ev.preventDefault();
+        return;
+      }
+      break;
+    case "ArrowLeft":
+      document.querySelector(".focusable-left").focus();
+      ev.preventDefault();
+      break;
+    case "ArrowRight":
+      document.querySelector(".focusable-right").focus();
+      ev.preventDefault();
+      break;
+    case "ArrowUp":
+      // Focus previous
+      const prev = document.activeElement.previousSibling;
+      if (prev !== null && isFocusable()) {
+        niceFocus(prev);
+        ev.preventDefault();
+      }
+      break;
+    case "ArrowDown":
+      // Focus next
+      const next = document.activeElement.nextSibling;
+      if (next !== null && isFocusable()) {
+        niceFocus(next);
+        ev.preventDefault();
+      }
+      break;
+  }
+})
