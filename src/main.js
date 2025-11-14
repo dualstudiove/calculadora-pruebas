@@ -1,5 +1,12 @@
 const { useState, useEffect } = React;
 
+// TODO: try this structure to implement Profiles:
+//   Data = Profile[]
+//   Profile = (name, Test[])
+//   Test = (name, price, aliases)
+//   name = string
+//   price = number
+//   aliases = string[]
 const dataURL = "src/data.json";
 
 const maxFuzzyDistance = 4;
@@ -283,3 +290,4 @@ document.addEventListener("keydown", (ev) => {
       break;
   }
 })
+
