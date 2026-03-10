@@ -124,7 +124,7 @@ function App() {
           type: "text",
           id: "search-box",
           className: "w-full border p-2 rounded-xl mb-4",
-          placeholder: "Buscar prueba [s]",
+          placeholder: "Buscar prueba [b]",
           value: search,
           onChange: (e) => setSearch(e.target.value),
         }),
@@ -256,6 +256,7 @@ function niceFocus(element) {
 
 document.addEventListener("keydown", (ev) => {
   switch (ev.key) {
+    case "b":
     case "s":
       const search_box = document.querySelector("#search-box");
       if (document.activeElement !== search_box) {
@@ -290,5 +291,6 @@ document.addEventListener("keydown", (ev) => {
       break;
   }
 })
+
 
 
