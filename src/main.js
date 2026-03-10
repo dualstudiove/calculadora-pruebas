@@ -234,7 +234,7 @@ function App() {
           React.createElement(
             "p",
             { className: "text-xs text-gray-500 mt-1" },
-            "Precios actualizados el viernes, 24/10/25"
+            "Precios actualizados el marter, 22/12/25"
           ),
         ),
       )
