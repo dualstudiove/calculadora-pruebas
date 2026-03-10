@@ -28,7 +28,7 @@
   { "name": "GLICEMIA POST PANDRIAL", "price": 4.00, "aliases": [] },
   { "name": "GRUPO SANGUINEO", "price": 8.00, "aliases": [] },
   { "name": "HB. GLICOSILADA A (1C)", "price": 18.00, "aliases": [] },
-  { "name": "HEMATOLOGIA", "price": 8.00, "aliases": [] },
+  { "name": "HEMATOLOGIA", "price": 8.00, "aliases": ["Hemograma"] },
   { "name": "HEMOCULTIVO", "price": 25.00, "aliases": [] },
   { "name": "HIERRO", "price": 10.00, "aliases": [] },
   { "name": "HIV 1+2 ELISA (4TA. GEN.)", "price": 15.00, "aliases": [] },
@@ -68,4 +68,5 @@
   { "name": "UREA", "price": 4.00, "aliases": [] },
   { "name": "V.S.G", "price": 7.00, "aliases": [] },
   { "name": "VDRL", "price": 8.00, "aliases": [] }
+
 ]
