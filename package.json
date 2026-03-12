@@ -1,28 +1,29 @@
 {
-  "name": "calculadora-pruebas-app",
-  "description": "Super aplicacion calculadora de pruebas",
-  "version": "0.0.0",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "watch": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
-    "clean": "rimraf ./dist",
-    "format": "biome format --write ./src",
-    "lint": "biome lint ./src vite.config.ts"
-  },
-  "dependencies": {
-    "solid-js": "^1.9.11"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "2.4.6",
-    "@tailwindcss/vite": "^4.2.1",
-    "@types/node": "^25.4.0",
-    "rimraf": "6.1.3",
-    "solid-devtools": "^0.34.5",
-    "tailwindcss": "^4.2.1",
-    "vite": "^6.2.0",
-    "vite-plugin-solid": "^2.11.10"
-  }
+	"name": "calculadora-pruebas-app",
+	"description": "Super aplicacion calculadora de pruebas",
+	"version": "0.0.0",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"watch": "vite",
+		"build": "vite build",
+		"preview": "vite preview",
+		"clean": "rimraf ./dist",
+		"format": "biome format --write ./src",
+		"lint": "biome lint --error-on-warnings ./src vite.config.ts",
+		"ci": "npm run lint && npm run build"
+	},
+	"dependencies": {
+		"solid-js": "^1.9.11"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.4.6",
+		"@tailwindcss/vite": "^4.2.1",
+		"@types/node": "^25.4.0",
+		"rimraf": "6.1.3",
+		"solid-devtools": "^0.34.5",
+		"tailwindcss": "^4.2.1",
+		"vite": "^6.2.0",
+		"vite-plugin-solid": "^2.11.10"
+	}
 }
