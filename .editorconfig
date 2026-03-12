@@ -12,4 +12,4 @@ indent_style = space
 
 [*.json]
 indent_size = 4
-indent_style = space
+indent_style = tab
