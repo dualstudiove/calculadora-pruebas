@@ -6,46 +6,30 @@ import { Search, FileDown, Settings } from "lucide-solid";
 import LeftList from "./components/LeftList";
 import Bcv from "./external-apis/Bcv";
 import ILovePdf from "./external-apis/ILovePdf";
-import Lab from "./Lab";
+import lab from "./lab";
 
-type PanelItem = { exam: Lab.Exam } | { profile: Lab.Profile };
-
-const itemName = (item: PanelItem): string => {
-    const obj: Lab.Exam | Lab.Profile = item.exam ?? item.profile;
-    return obj.name;
-};
-
-const itemAliases = (item: PanelItem): string[] => {
-    const obj: Lab.Exam | Lab.Profile = item.exam ?? item.profile;
-    return obj.aliases;
-};
-
-const App: Component = (props: {
-    last_updated: string;
-    exams: Lab.Exam[];
-    profiles: Lab.Profile[];
-}) => {
+const App: Component = (props: { last_updated: string; lab_data: LabItem[] }) => {
     const last_updated = () => props.last_updated;
-    const exams = () => props.exams;
-    const profiles = () => props.profiles;
+    const labData = () => props.lab_data;
 
     const [searchQuery, setSearchQuery] = createSignal<string>("");
-    const [shownItems, setShownItems] = createStore<PanelItem[]>({ items: [] });
-    const [selectedItems, setSelectedItems] = createStore<PanelItem[]>({ items: [] });
+    const [shownItems, setShownItems] = createStore<LabItem[]>({ items: [] });
+    const [selectedItems, setSelectedItems] = createStore<LabItem[]>({ items: [] });
     // TODO: tab indexes
     // const [focusedIndex, setFocusedIndex] = createSignal<number>(-1);
 
-    const addSelectedItem = (item: PanelItem) => {
+    const addSelectedItem = (item: LabItem) => {
         setSelectedItems("items", (currentItems) => [...currentItems, item]);
         setSearchQuery("");
     };
-    const removeSelectedItem = (item: PanelItem) => {
+    const removeSelectedItem = (item: LabItem) => {
         setSelectedItems("items", (currentItems) => currentItems.filter(item));
     };
 
     // Update available items when searchQuery changes using fuzzing algorithm
     createEffect(() => {
         const query = searchQuery();
+        console.log(`search: ${query}`);
         // TODO: add fuzzing algorithm. see: https://www.npmjs.com/package/fuzzball
     });
 
@@ -265,7 +249,7 @@ const App: Component = (props: {
                 <SearchBarDiv placeholder="Escriba el nombre del examen, perfil o alias..." />
 
                 <LeftList
-                    shownItems={() => []}
+                    shownItems={labData}
                     noItemsPlaceholder={
                         <div className="text-center py-10 text-slate-500">
                             No se encontraron resultados para "{searchQuery()}"
