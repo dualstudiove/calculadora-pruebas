@@ -8,7 +8,7 @@ import Bcv from "./external-apis/Bcv";
 import ILovePdf from "./external-apis/ILovePdf";
 import lab from "./lab";
 
-const App: Component = (props: { last_updated: string; lab_data: LabItem[] }) => {
+const App: Component = (props: { last_updated: string; lab_data: lab.Item[] }) => {
     const last_updated = () => props.last_updated;
     const labData = () => props.lab_data;
 

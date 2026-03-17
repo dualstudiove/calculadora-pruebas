@@ -7,12 +7,11 @@ import App from "./App";
 // TODO: make this available through build in vite.config.ts
 import labData from "./labDataDummy";
 
-const root = document.getElementById("root");
+// biome-ignore lint/style/noNonNullAssertion: compile time check below
+const root = document.getElementById("root")!;
 
 if (import.meta.env.DEV && !(root instanceof HTMLElement)) {
-    throw new Error(
-        "Root element not found. Did you forget to add it to your index.html? Or maybe the id attribute got misspelled?",
-    );
+    throw new Error("Root element not found");
 }
 
 const last_updated = new Date().toISOString();

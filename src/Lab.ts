@@ -28,7 +28,7 @@ export interface Profile {
 
 export function profileCalculateTotal(profile: Profile, exams: Exam[]) {
     let total = 0;
-    for (exam of exams) {
+    for (const exam of exams) {
         if (profile.id === exam.id) {
             total += exam.price;
         }
@@ -36,14 +36,14 @@ export function profileCalculateTotal(profile: Profile, exams: Exam[]) {
     return total;
 }
 
-export type ExamProfile = { exam: Exam } | { profile: Profile };
+export type ExamProfile = { exam: Exam; profile: null } | { exam: null; profile: Profile };
 
-export const itemName = (item: ExamProfile): string => {
-    const obj: Lab.Exam | Lab.Profile = item.exam ?? item.profile;
+export const itemName = (item: ExamProfile) => {
+    const obj: Exam | Profile = item.exam ?? item.profile;
     return obj.name;
 };
 
-export const itemAliases = (item: ExamProfile): string[] => {
-    const obj: Lab.Exam | Lab.Profile = item.exam ?? item.profile;
+export const itemAliases = (item: ExamProfile) => {
+    const obj: Exam | Profile = item.exam ?? item.profile;
     return obj.aliases;
 };

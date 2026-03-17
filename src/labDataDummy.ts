@@ -1,24 +1,24 @@
-// biome-ignore format: jkldsf
+// biome-ignore format: too distracting otherwise
 const first_names: string[] = [
     "Liam", "Olivia", "Noah", "Emma", "Oliver", "Ava", "Elijah", "Sophia", "James", "Isabella",
     "Benjamin", "Mia", "Lucas", "Charlotte", "Mason", "Amelia", "Ethan", "Harper", "Alexander",
     "Evelyn",
 ];
 
-// biome-ignore format: jdklf
+// biome-ignore format: too distracting otherwise
 const last_names: string[] = [
     "Johnson", "Smith", "Williams", "Brown", "Jones", "Garcia", "Miller", "Davis", "Rodriguez",
     "Martinez", "Hernandez", "Lopez", "Gonzalez", "Wilson", "Anderson", "Thomas", "Taylor", "Moore",
     "Jackson", "Martin",
 ];
 
-const randInt = (max) => Math.floor(Math.random() * max);
+const randInt = (max: number) => Math.floor(Math.random() * max);
 
 const coinChance = () => Math.random() > 0.5;
 
-const choose = (list) => list[randInt(list.length)];
+const choose = <T>(list: T[]) => list[randInt(list.length)];
 
-const shuffle = (array) => {
+const shuffle = <T>(array: T[]) => {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         const tmp = array[i];
@@ -30,7 +30,7 @@ const shuffle = (array) => {
 
 const randomName = () => `${choose(first_names)} ${choose(last_names)}`;
 
-const randomCollection = (gen, count) => {
+const randomCollection = <T>(gen: () => T, count: number) => {
     let collection = [];
     for (let i = 0; i < count; i += 1) {
         const item = gen();

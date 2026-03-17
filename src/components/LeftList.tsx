@@ -1,19 +1,25 @@
-import lab from "../lab";
 import type { ExamProfile } from "../lab";
+import lab from "../lab";
 
 const FlexWrapper: Component = (element) => {
     return <div className="flex-1 overflow-y-auto pr-2 custom-scrollbar">{element}</div>;
 };
 
-const ExamProfileCard: Component = (props: {exam_profile: ExamProfile, isProfile, onClick, onMouseEnter}) => (
+const ExamProfileCard: Component = (props: {
+    exam_profile: ExamProfile;
+    isProfile;
+    onClick;
+    onMouseEnter;
+}) => (
     <li
         // key={`${item.itemType}-${item.id}`}
         className={`p-4 rounded-xl border transition-all cursor-pointer ${
+            null
             // focusedIndex === index
             //     ? "border-blue-500 bg-blue-50 shadow-md ring-1 ring-blue-500"
             //     : "border-slate-200 bg-white hover:border-blue-300 hover:bg-slate-50"
         }`}
-        onClick={props.onClick}
+        // onClick={props.onClick}
         onMouseEnter={props.onMouseEnter}
         // onClick={() => addItem(item)}
         // onMouseEnter={() => setFocusedIndex(index)}
@@ -58,7 +64,7 @@ const ExamProfileCard: Component = (props: {exam_profile: ExamProfile, isProfile
     </li>
 );
 
-const LeftList: Component = (props: { shownItems; noItemsPlaceholder: Component }) => {
+const LeftList: Component = (props: { shownItems: ExamProfile; noItemsPlaceholder: Component }) => {
     const items = props.shownItems();
     if (items.length === 0) {
         return FlexWrapper(props.noItemsPlaceholder);
