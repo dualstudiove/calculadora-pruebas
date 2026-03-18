@@ -36,14 +36,14 @@ export function profileCalculateTotal(profile: Profile, exams: Exam[]) {
     return total;
 }
 
-export type ExamProfile = { exam: Exam; profile: null } | { exam: null; profile: Profile };
+export type MenuItem = Partial<{ exam: Exam; profile: Profile }>;
 
-export const itemName = (item: ExamProfile) => {
-    const obj: Exam | Profile = item.exam ?? item.profile;
+export const itemName = (item: MenuItem) => {
+    const obj: Exam | Profile = item.exam ?? item.profile ?? (undefined as never);
     return obj.name;
 };
 
-export const itemAliases = (item: ExamProfile) => {
-    const obj: Exam | Profile = item.exam ?? item.profile;
+export const itemAliases = (item: MenuItem) => {
+    const obj: Exam | Profile = item.exam ?? item.profile ?? (undefined as never);
     return obj.aliases;
 };

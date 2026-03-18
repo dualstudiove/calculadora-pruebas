@@ -1,3 +1,5 @@
+/* @refresh reload */
+
 import "solid-devtools";
 import { render } from "solid-js/web";
 
@@ -5,7 +7,7 @@ import "./index.css";
 import App from "./App";
 
 // TODO: make this available through build in vite.config.ts
-import labData from "./labDataDummy";
+import labData from "./lab/dummyData";
 
 // biome-ignore lint/style/noNonNullAssertion: compile time check below
 const root = document.getElementById("root")!;

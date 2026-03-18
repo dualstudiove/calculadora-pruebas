@@ -1,24 +1,24 @@
-import type { Component, Signal } from "solid-js";
-import { createSignal, createMemo, createEffect } from "solid-js";
+import { FileDown, Search } from "lucide-solid";
+import type { Component } from "solid-js";
+import { createEffect, createSignal } from "solid-js";
 import { createStore } from "solid-js/store";
-import { Search, FileDown, Settings } from "lucide-solid";
 
 import LeftList from "./components/LeftList";
-import Bcv from "./external-apis/Bcv";
-import ILovePdf from "./external-apis/ILovePdf";
-import lab from "./lab";
+// import Bcv from "./external-apis/Bcv";
+// import ILovePdf from "./external-apis/ILovePdf";
+import type { MenuItem } from "./lab";
 
-const App: Component = (props: { last_updated: string; lab_data: lab.Item[] }) => {
+const App: Component<{ last_updated: string; lab_data: MenuItem[] }> = (props) => {
     const last_updated = () => props.last_updated;
     const labData = () => props.lab_data;
 
     const [searchQuery, setSearchQuery] = createSignal<string>("");
-    const [shownItems, setShownItems] = createStore<LabItem[]>({ items: [] });
-    const [selectedItems, setSelectedItems] = createStore<LabItem[]>({ items: [] });
+    const [shownItems, setShownItems] = createStore<MenuItem[]>({ items: [] });
+    const [selectedItems, setSelectedItems] = createStore<MenuItem[]>({ items: [] });
     // TODO: tab indexes
     // const [focusedIndex, setFocusedIndex] = createSignal<number>(-1);
 
-    const addSelectedItem = (item: LabItem) => {
+    const addSelectedItem = (item: MenuItem) => {
         setSelectedItems("items", (currentItems) => [...currentItems, item]);
         setSearchQuery("");
     };
@@ -33,7 +33,7 @@ const App: Component = (props: { last_updated: string; lab_data: lab.Item[] }) =
         // TODO: add fuzzing algorithm. see: https://www.npmjs.com/package/fuzzball
     });
 
-    const generatePDF = () => {};
+    const generatePDF = () => { };
 
     // function rightListUI({}) {
     //     return (

@@ -1,3 +1,5 @@
+import type { Exam, MenuItem, Profile } from ".";
+
 // biome-ignore format: too distracting otherwise
 const first_names: string[] = [
     "Liam", "Olivia", "Noah", "Emma", "Oliver", "Ava", "Elijah", "Sophia", "James", "Isabella",
@@ -31,7 +33,7 @@ const shuffle = <T>(array: T[]) => {
 const randomName = () => `${choose(first_names)} ${choose(last_names)}`;
 
 const randomCollection = <T>(gen: () => T, count: number) => {
-    let collection = [];
+    const collection = [];
     for (let i = 0; i < count; i += 1) {
         const item = gen();
         collection.push(item);
@@ -40,24 +42,24 @@ const randomCollection = <T>(gen: () => T, count: number) => {
 };
 
 let id_exam = 0;
-const makeExam = () => {
+const makeExam = (): Exam => {
     id_exam += 1;
     return {
-        id: id_exam,
+        id: id_exam.toString(),
         name: randomName(),
         price: randInt(200),
         aliases: randomCollection(randomName, 2),
-        category: null,
+        category: undefined,
     };
 };
 
 const exams = randomCollection(makeExam, 30);
 
 let id_profile = 0;
-const makeProfile = () => {
+const makeProfile = (): Profile => {
     id_profile += 1;
 
-    let ids = [];
+    const ids = [];
     for (let i = 0; i < 10; i += 1) {
         if (coinChance()) {
             const exam_id = choose(exams).id;
@@ -65,23 +67,23 @@ const makeProfile = () => {
         }
     }
 
-    let special_price = null;
+    let special_price: number | undefined;
     if (coinChance()) {
         special_price = randInt(200);
     }
 
     return {
-        id: id_profile,
+        id: id_profile.toString(),
         name: `PRO ${randomName()}`,
         examIds: ids,
-        aliases: null,
+        aliases: undefined,
         specialPrice: special_price,
     };
 };
 
 const profiles = randomCollection(makeProfile, 10);
 
-let final = [];
+const final: MenuItem[] = [];
 for (const exam of exams) {
     final.push({ exam: exam });
 }
