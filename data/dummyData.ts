@@ -1,4 +1,4 @@
-import type { Exam, MenuItem, Profile } from ".";
+import type { Exam, MenuItem, Profile } from "@root/lab";
 
 // biome-ignore format: too distracting otherwise
 const first_names: string[] = [

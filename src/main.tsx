@@ -7,7 +7,7 @@ import "./index.css";
 import App from "./App";
 
 // TODO: make this available through build in vite.config.ts
-import labData from "./lab/dummyData";
+import { data } from "./lab";
 
 // biome-ignore lint/style/noNonNullAssertion: compile time check below
 const root = document.getElementById("root")!;
@@ -22,7 +22,7 @@ render(
     () => (
         <App
             last_updated={last_updated}
-            lab_data={labData}
+            lab_data={data}
         />
     ),
     root,

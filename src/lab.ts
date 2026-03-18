@@ -1,3 +1,5 @@
+export { data } from "lab-data";
+
 export const exam_categories = {
     S: "Serología",
     Q: "Química",
