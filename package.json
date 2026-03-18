@@ -11,7 +11,7 @@
         "clean": "rimraf ./dist",
         "format": "biome format --write",
         "lint": "biome lint --error-on-warnings",
-        "ci": "npm run lint && npm run build"
+        "ci": "npm run lint && biome format && npm run build"
     },
     "dependencies": {
         "lucide-solid": "^0.577.0",
