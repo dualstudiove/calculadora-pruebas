@@ -15,17 +15,17 @@ namespace _CardStyle {
 }
 
 const LeftList: Component<{
-    shownItems: Accessor<DataIndex[]>;
+    shownItems: DataIndex[];
     noItemsPlaceholder: JSX.Element;
     handleAddItem: (exam_profile: DataIndex) => void;
 }> = (props) => (
     <div class="flex-1 overflow-y-auto pr-2 custom-scrollbar">
         <Show
-            when={props.shownItems().length > 0}
+            when={props.shownItems.length > 0}
             fallback={props.noItemsPlaceholder}
         >
             <ul class="space-y-3">
-                <For each={props.shownItems()}>
+                <For each={props.shownItems}>
                     {(index, _getIndex) => (
                         <Card
                             exam_profile={index}

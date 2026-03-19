@@ -9,17 +9,17 @@ import ExamCategory from "./ExamCategory";
 import PriceTag from "./PriceTag";
 
 const RightList: Component<{
-    selectedItems: Accessor<DataIndex[]>;
+    selectedItems: DataIndex[];
     noItemsPlaceholder: JSX.Element;
     handleRemoveItem: (exam_profile: DataIndex) => void;
 }> = (props) => (
     <div class="flex-1 overflow-y-auto pr-2 custom-scrollbar mb-6 bg-white rounded-xl border border-slate-200 shadow-sm">
         <Show
-            when={props.selectedItems().length > 0}
+            when={props.selectedItems.length > 0}
             fallback={props.noItemsPlaceholder}
         >
             <ul class="divide-y divide-slate-100">
-                <For each={props.selectedItems()}>
+                <For each={props.selectedItems}>
                     {(index, _getIndex) => (
                         <Card
                             exam_profile={index}
