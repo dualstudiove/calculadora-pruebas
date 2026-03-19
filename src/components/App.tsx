@@ -20,18 +20,15 @@ const App: Component = (_props) => {
 
     // Search query
     const [searchQuery, setSearchQuery] = createSignal<string>("");
-    // // Items showed (left)
-    // const [shownItems2, setShownItems] = createSignal<DataIndex[]>([...range(lab_data.length)]);
     // Items selected (right)
-    const [selectedItems, setSelectedItems] = createStore([
-        ...range(Math.floor(lab_data.length / 2)),
-    ]);
+    const [selectedItems, setSelectedItems] = createStore<DataIndex[]>([]);
 
     const addSelectedItem = (exam_profile: DataIndex) =>
         setSelectedItems(selectedItems.length, exam_profile);
     const removeSelectedItem = (exam_profile: DataIndex) =>
         setSelectedItems(selectedItems.filter((index) => index !== exam_profile));
 
+    // Items showed (left)
     const shownItems = () =>
         Array.from(range(lab_data.length).filter((index) => !selectedItems.includes(index)));
 
