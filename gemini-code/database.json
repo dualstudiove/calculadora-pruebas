@@ -1,0 +1,645 @@
+{
+  "labExams": [
+    {
+      "id": "1",
+      "name": "% DE SATURACION",
+      "price": 15,
+      "aliases": ""
+    },
+    {
+      "id": "2",
+      "name": "ACIDO URICO",
+      "price": 4,
+      "aliases": ""
+    },
+    {
+      "id": "3",
+      "name": "ACS. PARA TUBERCULOSIS",
+      "price": 50,
+      "aliases": ""
+    },
+    {
+      "id": "4",
+      "name": "AG. HELICOBACTER PILORY (HECES)",
+      "price": 18,
+      "aliases": ""
+    },
+    {
+      "id": "5",
+      "name": "AGLUTININAS ANTI RH",
+      "price": 25,
+      "aliases": ""
+    },
+    {
+      "id": "6",
+      "name": "AGLUTININAS FEBRILES",
+      "price": 25,
+      "aliases": ""
+    },
+    {
+      "id": "7",
+      "name": "AMILASA",
+      "price": 6,
+      "aliases": ""
+    },
+    {
+      "id": "8",
+      "name": "ANTI D.N.A",
+      "price": 40,
+      "aliases": ""
+    },
+    {
+      "id": "9",
+      "name": "ANTICUERPOS ANTINUCLEARES",
+      "price": 40,
+      "aliases": ""
+    },
+    {
+      "id": "10",
+      "name": "ANTICUERPOS TOXOPLASMICOS (HAI)",
+      "price": 18,
+      "aliases": ""
+    },
+    {
+      "id": "11",
+      "name": "ANTIESTREPTOLISINA O",
+      "price": 10,
+      "aliases": ""
+    },
+    {
+      "id": "12",
+      "name": "B.H.C.G. CUANTITATIVA",
+      "price": 30,
+      "aliases": ""
+    },
+    {
+      "id": "13",
+      "name": "BILIRRUBINA",
+      "price": 8,
+      "aliases": ""
+    },
+    {
+      "id": "14",
+      "name": "CALCIO",
+      "price": 5,
+      "aliases": ""
+    },
+    {
+      "id": "15",
+      "name": "CARDIOLIPINA IgG-IgM",
+      "price": 60,
+      "aliases": ""
+    },
+    {
+      "id": "16",
+      "name": "CCP. CITRULINADO",
+      "price": 55,
+      "aliases": ""
+    },
+    {
+      "id": "17",
+      "name": "CELULAS L.E.",
+      "price": 30,
+      "aliases": ""
+    },
+    {
+      "id": "18",
+      "name": "CHAGAS",
+      "price": 18,
+      "aliases": ""
+    },
+    {
+      "id": "19",
+      "name": "CITOMEGALOVIRUS IgG-IgM",
+      "price": 30,
+      "aliases": ""
+    },
+    {
+      "id": "20",
+      "name": "CLORO",
+      "price": 7,
+      "aliases": ""
+    },
+    {
+      "id": "21",
+      "name": "COLESTEROL",
+      "price": 4,
+      "aliases": ""
+    },
+    {
+      "id": "22",
+      "name": "COOMBS DIRECTO",
+      "price": 25,
+      "aliases": ""
+    },
+    {
+      "id": "23",
+      "name": "COOMBS INDIRECTO",
+      "price": 25,
+      "aliases": ""
+    },
+    {
+      "id": "24",
+      "name": "CREATININA",
+      "price": 4,
+      "aliases": ""
+    },
+    {
+      "id": "25",
+      "name": "CULTIVOS (UROCULTIVO, HEMOCULTIVO, ETC)",
+      "price": 30,
+      "aliases": ""
+    },
+    {
+      "id": "26",
+      "name": "DENGUE (IgG-IgM)",
+      "price": 30,
+      "aliases": ""
+    },
+    {
+      "id": "27",
+      "name": "DEP. DE CREATININA EN 24 H.",
+      "price": 18,
+      "aliases": ""
+    },
+    {
+      "id": "28",
+      "name": "DHEA-S",
+      "price": 35,
+      "aliases": ""
+    },
+    {
+      "id": "29",
+      "name": "EPSTEIN BARR IgG-IgM",
+      "price": 30,
+      "aliases": ""
+    },
+    {
+      "id": "30",
+      "name": "ESTRADIOL",
+      "price": 18,
+      "aliases": ""
+    },
+    {
+      "id": "31",
+      "name": "EX. HECES",
+      "price": 4,
+      "aliases": ""
+    },
+    {
+      "id": "32",
+      "name": "F.S.H.",
+      "price": 18,
+      "aliases": ""
+    },
+    {
+      "id": "33",
+      "name": "FACTOR REUMATOIDEO LATEX",
+      "price": 12,
+      "aliases": ""
+    },
+    {
+      "id": "34",
+      "name": "FENOMENO LE",
+      "price": 30,
+      "aliases": ""
+    },
+    {
+      "id": "35",
+      "name": "FIBRINOGENO",
+      "price": 6,
+      "aliases": ""
+    },
+    {
+      "id": "36",
+      "name": "FOSFATASA ALCALINA",
+      "price": 6,
+      "aliases": ""
+    },
+    {
+      "id": "37",
+      "name": "FOSFOLIPIDOS IgG-IgM",
+      "price": 60,
+      "aliases": ""
+    },
+    {
+      "id": "38",
+      "name": "FOSFORO",
+      "price": 5,
+      "aliases": ""
+    },
+    {
+      "id": "39",
+      "name": "FROTIS DE SANGRE PERIFERICA",
+      "price": 8,
+      "aliases": ""
+    },
+    {
+      "id": "40",
+      "name": "G.G.T",
+      "price": 6,
+      "aliases": ""
+    },
+    {
+      "id": "41",
+      "name": "GLICEMIA",
+      "price": 4,
+      "aliases": ""
+    },
+    {
+      "id": "42",
+      "name": "GLICEMIA POST PANDRIAL",
+      "price": 4,
+      "aliases": ""
+    },
+    {
+      "id": "43",
+      "name": "GRUPO SANGUINEO",
+      "price": 8,
+      "aliases": ""
+    },
+    {
+      "id": "44",
+      "name": "HEMOGLOBINA GLICADA (HbA1c)",
+      "price": 18,
+      "aliases": ""
+    },
+    {
+      "id": "45",
+      "name": "HELICOBACTER PYLORI CUALITATIVO",
+      "price": 20,
+      "aliases": ""
+    },
+    {
+      "id": "46",
+      "name": "HELICOBACTER PYLORI IgG-IgM",
+      "price": 36,
+      "aliases": ""
+    },
+    {
+      "id": "47",
+      "name": "HEMATOLOGIA COMPLETA",
+      "price": 8,
+      "aliases": "Hemograma"
+    },
+    {
+      "id": "48",
+      "name": "HEMOCULTIVO",
+      "price": 25,
+      "aliases": ""
+    },
+    {
+      "id": "49",
+      "name": "CULT LIQ",
+      "price": 25,
+      "aliases": ""
+    },
+    {
+      "id": "50",
+      "name": "COPROCULTIVO",
+      "price": 25,
+      "aliases": ""
+    },
+    {
+      "id": "51",
+      "name": "HEPATITIS A IgG",
+      "price": 18,
+      "aliases": ""
+    },
+    {
+      "id": "52",
+      "name": "HEPATITIS A IgM",
+      "price": 18,
+      "aliases": ""
+    },
+    {
+      "id": "53",
+      "name": "HIERRO",
+      "price": 10,
+      "aliases": ""
+    },
+    {
+      "id": "54",
+      "name": "HIV 1+2 ELISA (4TA. GEN.)",
+      "price": 15,
+      "aliases": ""
+    },
+    {
+      "id": "55",
+      "name": "INMUNOGLOBULINA A",
+      "price": 18,
+      "aliases": ""
+    },
+    {
+      "id": "56",
+      "name": "INMUNOGLOBULINA E (IGE)",
+      "price": 18,
+      "aliases": ""
+    },
+    {
+      "id": "57",
+      "name": "INMUNOGLOBULINA G",
+      "price": 18,
+      "aliases": ""
+    },
+    {
+      "id": "58",
+      "name": "INMUNOGLOBULINA M",
+      "price": 18,
+      "aliases": ""
+    },
+    {
+      "id": "59",
+      "name": "L.H",
+      "price": 18,
+      "aliases": ""
+    },
+    {
+      "id": "60",
+      "name": "LDH",
+      "price": 6,
+      "aliases": ""
+    },
+    {
+      "id": "61",
+      "name": "LEUCOCITOS",
+      "price": 4,
+      "aliases": ""
+    },
+    {
+      "id": "62",
+      "name": "DIFERENCIAL",
+      "price": 4,
+      "aliases": ""
+    },
+    {
+      "id": "63",
+      "name": "LIPASA",
+      "price": 20,
+      "aliases": ""
+    },
+    {
+      "id": "64",
+      "name": "MAGNESIO",
+      "price": 5,
+      "aliases": ""
+    },
+    {
+      "id": "65",
+      "name": "MICROALBUMINURIA",
+      "price": 12,
+      "aliases": ""
+    },
+    {
+      "id": "66",
+      "name": "ORINA",
+      "price": 4,
+      "aliases": ""
+    },
+    {
+      "id": "67",
+      "name": "PCR CUANTITATIVA",
+      "price": 10,
+      "aliases": ""
+    },
+    {
+      "id": "72",
+      "name": "PH y AZUCARES RED.",
+      "price": 8,
+      "aliases": ""
+    },
+    {
+      "id": "73",
+      "name": "POTASIO",
+      "price": 7,
+      "aliases": ""
+    },
+    {
+      "id": "74",
+      "name": "PROGESTERONA",
+      "price": 18,
+      "aliases": ""
+    },
+    {
+      "id": "75",
+      "name": "PROLACTINA",
+      "price": 18,
+      "aliases": ""
+    },
+    {
+      "id": "76",
+      "name": "PROTEINURIA",
+      "price": 10,
+      "aliases": ""
+    },
+    {
+      "id": "77",
+      "name": "PROTEOGRAMA",
+      "price": 8,
+      "aliases": ""
+    },
+    {
+      "id": "78",
+      "name": "PRUEBA DE EMBARAZO CUALITATIVA",
+      "price": 7,
+      "aliases": ""
+    },
+    {
+      "id": "79",
+      "name": "PRUEBA de IGRA PARA TUBERCULOSIS",
+      "price": 60,
+      "aliases": ""
+    },
+    {
+      "id": "80",
+      "name": "REL. ACIDO URICO/CREATININA",
+      "price": 8,
+      "aliases": ""
+    },
+    {
+      "id": "81",
+      "name": "REL. CALCIO/CREATININA",
+      "price": 9,
+      "aliases": ""
+    },
+    {
+      "id": "82",
+      "name": "RETICULOCITO",
+      "price": 6,
+      "aliases": ""
+    },
+    {
+      "id": "83",
+      "name": "SANGRE OCULTA (HECES)",
+      "price": 7,
+      "aliases": ""
+    },
+    {
+      "id": "84",
+      "name": "SODIO",
+      "price": 7,
+      "aliases": ""
+    },
+    {
+      "id": "85",
+      "name": "SUDAM III (HECES)",
+      "price": 5,
+      "aliases": ""
+    },
+    {
+      "id": "86",
+      "name": "TIEMPO DE SANGRIA",
+      "price": 5,
+      "aliases": ""
+    },
+    {
+      "id": "87",
+      "name": "TIEMPO DE COAGULACION",
+      "price": 5,
+      "aliases": ""
+    },
+    {
+      "id": "88",
+      "name": "T.G.O",
+      "price": 6,
+      "aliases": ""
+    },
+    {
+      "id": "89",
+      "name": "T.G.P",
+      "price": 6,
+      "aliases": ""
+    },
+    {
+      "id": "90",
+      "name": "T.P.T",
+      "price": 5,
+      "aliases": ""
+    },
+    {
+      "id": "91",
+      "name": "T.P",
+      "price": 5,
+      "aliases": ""
+    },
+    {
+      "id": "92",
+      "name": "T.S.H",
+      "price": 18,
+      "aliases": ""
+    },
+    {
+      "id": "93",
+      "name": "T3 LIBRE",
+      "price": 18,
+      "aliases": ""
+    },
+    {
+      "id": "94",
+      "name": "T3 TOTAL",
+      "price": 18,
+      "aliases": ""
+    },
+    {
+      "id": "95",
+      "name": "T4 LIBRE",
+      "price": 18,
+      "aliases": ""
+    },
+    {
+      "id": "96",
+      "name": "T4 TOTAL",
+      "price": 18,
+      "aliases": ""
+    },
+    {
+      "id": "97",
+      "name": "TESTOSTERONA LIBRE",
+      "price": 20,
+      "aliases": ""
+    },
+    {
+      "id": "98",
+      "name": "TESTOSTERONA TOTAL",
+      "price": 18,
+      "aliases": ""
+    },
+    {
+      "id": "99",
+      "name": "TOXO (IgG-IgM)",
+      "price": 36,
+      "aliases": ""
+    },
+    {
+      "id": "100",
+      "name": "TRANSFERRINA",
+      "price": 12,
+      "aliases": ""
+    },
+    {
+      "id": "101",
+      "name": "TRIGLICERIDOS",
+      "price": 4,
+      "aliases": ""
+    },
+    {
+      "id": "102",
+      "name": "UREA",
+      "price": 4,
+      "aliases": ""
+    },
+    {
+      "id": "103",
+      "name": "V.S.G",
+      "price": 7,
+      "aliases": ""
+    },
+    {
+      "id": "104",
+      "name": "VDRL",
+      "price": 8,
+      "aliases": ""
+    }
+  ],
+  "labProfiles": [
+    {
+      "id": "p1",
+      "name": "PERFIL PRE-OPERATORIO",
+      "aliases": "Preoperatorio, Cirugía",
+      "examIds": [
+        "47",
+        "41",
+        "102",
+        "24",
+        "91",
+        "90",
+        "66",
+        "54",
+        "104"
+      ],
+      "specialPrice": 40
+    },
+    {
+      "id": "p2",
+      "name": "PERFIL LIPIDICO",
+      "aliases": "Lípidos",
+      "examIds": [
+        "21",
+        "101"
+      ],
+      "specialPrice": 12
+    },
+    {
+      "id": "p3",
+      "name": "PERFIL TIROIDEO",
+      "aliases": "Tiroides",
+      "examIds": [
+        "93",
+        "95",
+        "92"
+      ],
+      "specialPrice": 50
+    }
+  ],
+  "lastUpdated": "11/3/2026"
+}
