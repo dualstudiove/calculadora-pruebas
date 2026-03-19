@@ -4,6 +4,7 @@ import { data_last_updated, InspectExamProfile, data as lab_data } from "@root/l
 // import Bcv from "./external-apis/Bcv";
 // import ILovePdf from "./external-apis/ILovePdf";
 
+import { extract as fuzzExtract, token_set_ratio } from "fuzzball";
 import { FileDown, Search, Trash2 } from "lucide-solid";
 import type { Component } from "solid-js";
 import { createEffect, createSignal, Show } from "solid-js";
@@ -29,7 +30,7 @@ const App: Component = (_props) => {
         setSelectedItems(selectedItems.filter((index) => index !== exam_profile));
 
     // Items showed (left)
-    const shownItems = () =>
+    const shownItems = (): DataIndex[] =>
         Array.from(range(lab_data.length).filter((index) => !selectedItems.includes(index)));
 
     const shownItemsSearchResult = () => {
@@ -39,8 +40,13 @@ const App: Component = (_props) => {
             return items;
         }
 
-        // TODO: add fuzzing algorithm. see: https://www.npmjs.com/package/fuzzball
-        return [];
+        const fuzz_result = fuzzExtract(query, items, {
+            scorer: token_set_ratio,
+            processor: (exam_profile) => new InspectExamProfile(exam_profile).name(),
+        });
+        const result = fuzz_result.map(([choice, _score, _index]) => choice);
+        console.debug("fuzz result:", result);
+        return result;
     };
 
     const totalPrice = () =>
