@@ -1,5 +1,4 @@
 /** biome-ignore-all lint/complexity/noUselessTernary: better readability */
-import { readFile } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
 
