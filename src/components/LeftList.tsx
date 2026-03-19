@@ -6,6 +6,7 @@ import type { Accessor, Component, JSX } from "solid-js";
 import { For, Show } from "solid-js";
 
 import ExamCategory from "./ExamCategory";
+import PriceTag from "./PriceTag";
 
 // TODO: Use these styles change Card hover
 namespace _CardStyle {
@@ -48,16 +49,6 @@ const Card: Component<{
 
     const name = () => itemName(examProfile());
     const aliases = () => itemAliases(examProfile()) ?? [];
-    const price = () => {
-        let price: number;
-        if (kind() === "Profile") {
-            const p = profile();
-            price = p.special_price ?? p.total_price;
-        } else {
-            price = exam().price;
-        }
-        return `${price.toFixed(2)} REF`;
-    };
 
     return (
         // biome-ignore lint/a11y/useKeyWithClickEvents: TODO: remove later, we need keyboard navigation
@@ -76,20 +67,13 @@ const Card: Component<{
                     </Show>
                 </div>
                 <div class="flex items-center gap-2">
-                    <Show
-                        when={
-                            kind() === "Profile" &&
-                            profile().total_price >
-                                (profile().special_price ?? Number.MAX_SAFE_INTEGER)
-                        }
-                    >
-                        <span class="text-xs text-slate-400 line-through">
-                            {profile().total_price.toFixed(2)}
-                        </span>
-                    </Show>
-                    <span class="font-bold text-blue-700 bg-blue-100 px-2 py-0.5 rounded text-sm">
-                        {price()}
-                    </span>
+                    <PriceTag
+                        exam_profile={props.exam_profile}
+                        style={{
+                            discount: "text-xs text-slate-400 line-through",
+                            price: "font-bold text-blue-700 bg-blue-100 px-2 py-0.5 rounded text-sm",
+                        }}
+                    />
                 </div>
             </div>
             <Show when={aliases().length > 0}>

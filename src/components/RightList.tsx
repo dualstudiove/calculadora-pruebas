@@ -6,6 +6,7 @@ import type { Accessor, Component, JSX } from "solid-js";
 import { createSignal, For, Show } from "solid-js";
 
 import ExamCategory from "./ExamCategory";
+import PriceTag from "./PriceTag";
 
 const RightList: Component<{
     selectedItems: Accessor<DataIndex[]>;
@@ -43,16 +44,6 @@ const Card: Component<{
     const name = () => itemName(examProfile());
     const aliases = () => itemAliases(examProfile()) ?? [];
     const aliasesJoined = () => aliases().join(", ");
-    const price = () => {
-        let price: number;
-        if (kind() === "Profile") {
-            const p = profile();
-            price = p.special_price ?? p.total_price;
-        } else {
-            price = exam().price;
-        }
-        return `${price.toFixed(2)} REF`;
-    };
 
     return (
         <li class="p-4 hover:bg-slate-50 transition-colors group">
@@ -81,18 +72,14 @@ const Card: Component<{
                 </div>
                 <div class="flex items-center gap-4 pt-1">
                     <div class="flex flex-col items-end">
-                        <Show
-                            when={
-                                kind() === "Profile" &&
-                                profile().total_price >
-                                    (profile().special_price ?? Number.MAX_SAFE_INTEGER)
-                            }
-                        >
-                            <span class="text-[10px] text-slate-400 line-through leading-none mb-0.5">
-                                {profile().total_price.toFixed(2)}
-                            </span>
-                        </Show>
-                        <span class="font-semibold text-slate-700 leading-none">{price()}</span>
+                        <PriceTag
+                            exam_profile={props.exam_profile}
+                            style={{
+                                discount:
+                                    "text-[10px] text-slate-400 line-through leading-none mb-0.5",
+                                price: "font-semibold text-slate-700 leading-none",
+                            }}
+                        />
                     </div>
                     <button
                         type="button"
@@ -130,7 +117,7 @@ const ExpandableProfileInfo: Component<{ profile: Profile }> = (props) => {
             </ul>
             <button
                 type="button"
-                onClick={() => setExpanded(false)}
+                onClick={[setExpanded, false]}
                 class="text-blue-600 hover:text-blue-800 font-medium mt-2 flex items-center gap-1"
             >
                 Ocultar <ChevronUp class="w-3 h-3" />
@@ -140,10 +127,15 @@ const ExpandableProfileInfo: Component<{ profile: Profile }> = (props) => {
 
     const HiddenInfo = () => (
         <div class="text-xs text-slate-500">
-            <span class="truncate block max-w-[250px]">Incluye: {examNames()}</span>
+            <span
+                class="truncate block max-w-[250px]"
+                title={examNames()}
+            >
+                Incluye: {examNames()}
+            </span>
             <button
                 type="button"
-                onClick={() => setExpanded(true)}
+                onClick={[setExpanded, true]}
                 class="text-blue-600 hover:text-blue-800 font-medium mt-0.5 flex items-center gap-1"
             >
                 Ver más <ChevronDown class="w-3 h-3" />
