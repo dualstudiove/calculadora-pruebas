@@ -80,7 +80,7 @@ const makeProfile = (): Profile => {
         exams_indexes: ids,
         aliases: undefined,
         total_price: total_price,
-        special_price: special_price,
+        special_price: special_price ?? undefined,
     };
 };
 
@@ -96,3 +96,4 @@ for (const profile of profiles) {
 
 // shuffle(final);
 export const data = final;
+export const last_updated = new Date().toISOString();

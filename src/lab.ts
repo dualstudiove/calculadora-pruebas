@@ -1,6 +1,6 @@
 import { data as internal_data } from "lab-data";
 
-export { data } from "lab-data";
+export { data, last_updated as data_last_updated } from "lab-data";
 
 export type DataIndex = number;
 

@@ -1,5 +1,5 @@
 import type { DataIndex } from "@root/lab";
-import { getExamProfile, itemName, data as lab_data } from "@root/lab";
+import { data_last_updated, getExamProfile, itemName, data as lab_data } from "@root/lab";
 
 // import Bcv from "./external-apis/Bcv";
 // import ILovePdf from "./external-apis/ILovePdf";
@@ -10,12 +10,10 @@ import { createEffect, createSignal, Show } from "solid-js";
 import LeftList from "./LeftList";
 import RightList from "./RightList";
 
-const last_updated = new Date().toISOString();
-
 const range = (n: number) => Array(n).keys();
 
 const App: Component = (_props) => {
-    const lastUpdated = () => last_updated;
+    const lastUpdated = () => data_last_updated;
 
     //-- Signals & reactives --------------------------------------------------------------------
 
@@ -24,12 +22,23 @@ const App: Component = (_props) => {
     // Items showed (left)
     const [shownItems, setShownItems] = createSignal<DataIndex[]>([...range(lab_data.length)]);
     // Items selected (right)
-    const [selectedItems, setSelectedItems] = createSignal<DataIndex[]>([]);
+    const [selectedItems, setSelectedItems] = createSignal<DataIndex[]>([
+        ...range(lab_data.length),
+    ]);
+
+    const shownItemsSearchResult = () => {
+        const query = searchQuery();
+        const items = shownItems();
+        if (query.length === 0) {
+            return items;
+        }
+
+        // TODO: add fuzzing algorithm. see: https://www.npmjs.com/package/fuzzball
+        return [];
+    };
 
     // TODO: tab indexes
     // const [focusedIndex, setFocusedIndex] = createSignal<number>(-1);
-
-    const restoreShownItems = () => setShownItems([...range(lab_data.length)]);
 
     // const addSelectedItem = (item: ExamProfile) => {
     //     setSelectedItems("items", (currentItems) => [...currentItems, item]);
@@ -44,17 +53,17 @@ const App: Component = (_props) => {
 
     //-- Effects --------------------------------------------------------------------------------
 
-    // Update shown items when searchQuery changes using fuzzing algorithm
-    createEffect(() => {
-        const query = searchQuery();
-        console.debug(`search: ${query}`);
-        if (query.length === 0) {
-            restoreShownItems();
-            return;
-        }
-        setShownItems([]);
-        // TODO: add fuzzing algorithm. see: https://www.npmjs.com/package/fuzzball
-    });
+    // // Update shown items when searchQuery changes using fuzzing algorithm
+    // createEffect(() => {
+    //     const query = searchQuery();
+    //     console.debug(`search: ${query}`);
+    //     if (query.length === 0) {
+    //         restoreShownItems();
+    //         return;
+    //     }
+    //     setShownItems([]);
+    //     // TODO: add fuzzing algorithm. see: https://www.npmjs.com/package/fuzzball
+    // });
 
     //-- Components -----------------------------------------------------------------------------
 
@@ -82,7 +91,11 @@ const App: Component = (_props) => {
                     class="block w-full pl-10 pr-3 py-3 border border-slate-300 rounded-xl leading-5 bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm transition-shadow shadow-sm"
                     placeholder={props.placeholder}
                     value={searchQuery()}
-                    onChange={(e) => setSearchQuery(e.target.value)}
+                    onChange={(e) => {
+                        const query = e.target.value;
+                        console.debug(`search: ${query}`);
+                        setSearchQuery(query);
+                    }}
                 />
             </div>
         );
@@ -121,18 +134,18 @@ const App: Component = (_props) => {
                         </p>
                     </div>
                 </div>
+
                 <SearchBarDiv placeholder="Escriba el nombre del examen, perfil o alias..." />
 
                 <LeftList
-                    // TODO
-                    shownItems={shownItems}
+                    shownItems={shownItemsSearchResult}
                     noItemsPlaceholder={
                         <div class="text-center py-10 text-slate-500">
                             No se encontraron resultados para "{searchQuery()}"
                         </div>
                     }
                     handleAddItem={(exam_profile) => {
-                        console.log("clicked: ", itemName(getExamProfile(exam_profile)));
+                        console.debug("clicked: ", itemName(getExamProfile(exam_profile)));
                     }}
                 />
             </div>
@@ -156,14 +169,7 @@ const App: Component = (_props) => {
 
                 <RightList
                     // TODO
-                    selectedItems={() => [
-                        1,
-                        2,
-                        3,
-                        lab_data.length - 3,
-                        lab_data.length - 2,
-                        lab_data.length - 1,
-                    ]}
+                    selectedItems={selectedItems}
                     handleRemoveItem={(_exam_profile) => {}}
                     noItemsPlaceholder={
                         <div class="h-full flex flex-col items-center justify-center text-slate-400 p-6 text-center">
