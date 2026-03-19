@@ -46,7 +46,10 @@ const App: Component = (_props) => {
         return [];
     };
 
-    const totalPrice = () => 0;
+    const totalPrice = () =>
+        selectedItems
+            .map((exam_profile) => new InspectExamProfile(exam_profile).effectivePrice())
+            .reduce((total_before, price) => total_before + price, 0);
 
     // TODO: tab indexes
     // const [focusedIndex, setFocusedIndex] = createSignal<number>(-1);
@@ -192,11 +195,11 @@ const App: Component = (_props) => {
                         </p>
                     </div>
                     <div class="text-right">
+                        <div class="text-3xl font-bold text-blue-700">
+                            {totalPrice().toFixed(2)}{" "}
+                            <span class="text-xl text-blue-500 font-medium">REF</span>
+                        </div>
                         {
-                            // <div class="text-3xl font-bold text-blue-700">
-                            //     {total().toFixed(2)}{" "}
-                            //     <span class="text-xl text-blue-500 font-medium">REF</span>
-                            // </div>
                             //     {bcvRate && (
                             //         <div class="text-lg font-medium text-slate-600 mt-1">
                             //             {(total * bcvRate).toLocaleString("es-VE", {
