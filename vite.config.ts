@@ -38,6 +38,7 @@ function labData(): Rollup.Plugin {
 export default defineConfig(({ mode }) => {
     const _env = loadEnv(mode, ".", "");
     return {
+        base: "https://dualstudiove.github.io/calculadora-pruebas/",
         plugins: [
             labData(),
             devtools({
