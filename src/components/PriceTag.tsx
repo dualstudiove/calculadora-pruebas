@@ -1,5 +1,5 @@
 import type { DataIndex } from "@root/lab";
-import { asExam, asProfile, getExamProfile, getKind } from "@root/lab";
+import { asProfile, getEffectivePrice, getExamProfile, getKind } from "@root/lab";
 
 import type { Component } from "solid-js";
 import { Show } from "solid-js";
@@ -13,7 +13,6 @@ const PriceTag: Component<{
 }> = (props) => {
     const examProfile = () => getExamProfile(props.exam_profile);
     const kind = () => getKind(examProfile());
-    const exam = () => asExam(examProfile());
     const profile = () => asProfile(examProfile());
 
     const hasDiscount = () =>
@@ -21,8 +20,7 @@ const PriceTag: Component<{
         profile().special_price &&
         profile().total_price > (profile().special_price as number);
     const originalPrice = () => profile().total_price;
-    const profileEffectivePrice = () => profile().special_price ?? profile().total_price;
-    const effectivePrice = () => (kind() === "Exam" ? exam().price : profileEffectivePrice());
+    const effectivePrice = () => getEffectivePrice(examProfile());
 
     return (
         <>

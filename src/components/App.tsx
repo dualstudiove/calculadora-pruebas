@@ -46,6 +46,8 @@ const App: Component = (_props) => {
         return [];
     };
 
+    const totalPrice = () => 0;
+
     // TODO: tab indexes
     // const [focusedIndex, setFocusedIndex] = createSignal<number>(-1);
 
