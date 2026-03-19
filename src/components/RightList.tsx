@@ -1,8 +1,8 @@
 import type { DataIndex, Profile } from "@root/lab";
-import { asExam, asProfile, getExamProfile, getKind, itemAliases, itemName } from "@root/lab";
+import { InspectExamProfile } from "@root/lab";
 
 import { ChevronDown, ChevronUp, Layers, X } from "lucide-solid";
-import type { Accessor, Component, JSX } from "solid-js";
+import type { Component, JSX } from "solid-js";
 import { createSignal, For, Show } from "solid-js";
 
 import ExamCategory from "./ExamCategory";
@@ -36,38 +36,33 @@ const Card: Component<{
     exam_profile: DataIndex;
     handleRemoveItem: (exam_profile: DataIndex) => void;
 }> = (props) => {
-    const examProfile = () => getExamProfile(props.exam_profile);
-    const kind = () => getKind(examProfile());
-    const exam = () => asExam(examProfile());
-    const profile = () => asProfile(examProfile());
-
-    const name = () => itemName(examProfile());
-    const aliases = () => itemAliases(examProfile()) ?? [];
-    const aliasesJoined = () => aliases().join(", ");
+    const ep = new InspectExamProfile(props.exam_profile);
+    const has_aliases = (ep.aliases() ?? []).length > 0;
+    const aliases_joined = ep.aliases()?.join(", ");
 
     return (
         <li class="p-4 hover:bg-slate-50 transition-colors group">
             <div class="flex justify-between items-start">
                 <div class="flex-1 pr-4">
                     <div class="flex items-center gap-2">
-                        <Show when={kind() === "Profile"}>
+                        <Show when={ep.kind === "Profile"}>
                             <Layers class="w-4 h-4 text-purple-500 shrink-0" />
                         </Show>
-                        <div class="font-medium text-slate-900">{name()}</div>
-                        <Show when={kind() === "Exam"}>
-                            <ExamCategory exam={exam()} />
+                        <div class="font-medium text-slate-900">{ep.name()}</div>
+                        <Show when={ep.kind === "Exam"}>
+                            <ExamCategory exam={ep.asExam()} />
                         </Show>
                     </div>
-                    <Show when={aliases().length > 0}>
+                    <Show when={has_aliases}>
                         <div
                             class="text-xs text-slate-500 truncate"
-                            title={aliasesJoined()}
+                            title={aliases_joined}
                         >
-                            {aliasesJoined()}
+                            {aliases_joined}
                         </div>
                     </Show>
-                    <Show when={kind() === "Profile"}>
-                        <ExpandableProfileInfo profile={profile()} />
+                    <Show when={ep.kind === "Profile"}>
+                        <ExpandableProfileInfo profile={ep.asProfile()} />
                     </Show>
                 </div>
                 <div class="flex items-center gap-4 pt-1">
@@ -97,13 +92,10 @@ const Card: Component<{
 
 const ExpandableProfileInfo: Component<{ profile: Profile }> = (props) => {
     const [expanded, setExpanded] = createSignal<boolean>(false);
-    const examNames = () =>
-        props.profile.exams_indexes
-            .map((data_index) => {
-                const exam = asExam(getExamProfile(data_index));
-                return exam.name;
-            })
-            .join(", ");
+    const exam_names = props.profile.exams_indexes.map((data_index) => {
+        const exam = new InspectExamProfile(data_index).asExam();
+        return exam.name;
+    });
 
     //-- Components -----------------------------------------------------------------------------
 
@@ -111,9 +103,7 @@ const ExpandableProfileInfo: Component<{ profile: Profile }> = (props) => {
         <div class="text-xs text-slate-600 bg-slate-100 p-2 rounded mt-2">
             <span class="font-medium block mb-1">Incluye:</span>
             <ul class="list-disc pl-4 space-y-0.5">
-                <For each={props.profile.exams_indexes}>
-                    {(index: DataIndex) => <li>{asExam(getExamProfile(index)).name}</li>}
-                </For>
+                <For each={exam_names}>{(name: string) => <li>{name}</li>}</For>
             </ul>
             <button
                 type="button"
@@ -125,23 +115,26 @@ const ExpandableProfileInfo: Component<{ profile: Profile }> = (props) => {
         </div>
     );
 
-    const HiddenInfo = () => (
-        <div class="text-xs text-slate-500">
-            <span
-                class="truncate block max-w-[250px]"
-                title={examNames()}
-            >
-                Incluye: {examNames()}
-            </span>
-            <button
-                type="button"
-                onClick={[setExpanded, true]}
-                class="text-blue-600 hover:text-blue-800 font-medium mt-0.5 flex items-center gap-1"
-            >
-                Ver más <ChevronDown class="w-3 h-3" />
-            </button>
-        </div>
-    );
+    const HiddenInfo = () => {
+        const exam_names_joined = exam_names.join(", ");
+        return (
+            <div class="text-xs text-slate-500">
+                <span
+                    class="truncate block max-w-[250px]"
+                    title={exam_names_joined}
+                >
+                    Incluye: {exam_names_joined}
+                </span>
+                <button
+                    type="button"
+                    onClick={[setExpanded, true]}
+                    class="text-blue-600 hover:text-blue-800 font-medium mt-0.5 flex items-center gap-1"
+                >
+                    Ver más <ChevronDown class="w-3 h-3" />
+                </button>
+            </div>
+        );
+    };
 
     return (
         <div class="mt-1">

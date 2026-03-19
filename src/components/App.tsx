@@ -1,5 +1,5 @@
 import type { DataIndex } from "@root/lab";
-import { data_last_updated, getExamProfile, itemName, data as lab_data } from "@root/lab";
+import { data_last_updated, InspectExamProfile, data as lab_data } from "@root/lab";
 
 // import Bcv from "./external-apis/Bcv";
 // import ILovePdf from "./external-apis/ILovePdf";
@@ -7,7 +7,7 @@ import { data_last_updated, getExamProfile, itemName, data as lab_data } from "@
 import { FileDown, Search, Trash2 } from "lucide-solid";
 import type { Component } from "solid-js";
 import { createEffect, createSignal, Show } from "solid-js";
-import { createStore, reconcile } from "solid-js/store";
+import { createStore } from "solid-js/store";
 import LeftList from "./LeftList";
 import RightList from "./RightList";
 
@@ -137,7 +137,7 @@ const App: Component = (_props) => {
                 }
                 handleAddItem={(exam_profile) => {
                     addSelectedItem(exam_profile);
-                    console.debug("added:", itemName(getExamProfile(exam_profile)));
+                    console.debug("added:", new InspectExamProfile(exam_profile).exam_profile);
                 }}
             />
         </div>
@@ -165,7 +165,7 @@ const App: Component = (_props) => {
                 selectedItems={selectedItems}
                 handleRemoveItem={(exam_profile) => {
                     removeSelectedItem(exam_profile);
-                    console.debug("removed:", itemName(getExamProfile(exam_profile)));
+                    console.debug("removed:", new InspectExamProfile(exam_profile).exam_profile);
                 }}
                 noItemsPlaceholder={
                     <div class="h-full flex flex-col items-center justify-center text-slate-400 p-6 text-center">

@@ -1,8 +1,8 @@
-import type { DataIndex, ExamProfile } from "@root/lab";
-import { asExam, asProfile, getExamProfile, getKind, itemAliases, itemName } from "@root/lab";
+import type { DataIndex } from "@root/lab";
+import { InspectExamProfile } from "@root/lab";
 
 import { Layers } from "lucide-solid";
-import type { Accessor, Component, JSX } from "solid-js";
+import type { Component, JSX } from "solid-js";
 import { For, Show } from "solid-js";
 
 import ExamCategory from "./ExamCategory";
@@ -42,13 +42,9 @@ const Card: Component<{
     exam_profile: DataIndex;
     handleAddItem: (exam_profile: DataIndex) => void;
 }> = (props) => {
-    const examProfile = () => getExamProfile(props.exam_profile);
-    const kind = () => getKind(examProfile());
-    const exam = () => asExam(examProfile());
-    const profile = () => asProfile(examProfile());
-
-    const name = () => itemName(examProfile());
-    const aliases = () => itemAliases(examProfile()) ?? [];
+    const ep = new InspectExamProfile(props.exam_profile);
+    const aliases = ep.aliases() ?? [];
+    const has_aliases = aliases.length > 0;
 
     return (
         // biome-ignore lint/a11y/useKeyWithClickEvents: TODO: remove later, we need keyboard navigation
@@ -58,12 +54,12 @@ const Card: Component<{
         >
             <div class="flex justify-between items-start mb-1">
                 <div class="flex items-center gap-2">
-                    <Show when={kind() === "Profile"}>
+                    <Show when={ep.kind === "Profile"}>
                         <Layers class="w-4 h-4 text-purple-500 shrink-0" />
                     </Show>
-                    <span class="font-semibold text-slate-900">{name()}</span>
-                    <Show when={kind() !== "Profile"}>
-                        <ExamCategory exam={exam()} />
+                    <span class="font-semibold text-slate-900">{ep.name()}</span>
+                    <Show when={ep.kind !== "Profile"}>
+                        <ExamCategory exam={ep.asExam()} />
                     </Show>
                 </div>
                 <div class="flex items-center gap-2">
@@ -76,11 +72,11 @@ const Card: Component<{
                     />
                 </div>
             </div>
-            <Show when={aliases().length > 0}>
-                <AlsoKnownAs aliases={aliases()} />
+            <Show when={has_aliases}>
+                <AlsoKnownAs aliases={aliases} />
             </Show>
-            <Show when={kind() === "Profile"}>
-                <IncludeProfileExams count={asProfile(examProfile()).exams_indexes.length} />
+            <Show when={ep.kind === "Profile"}>
+                <IncludeProfileExams count={ep.asProfile().exams_indexes.length} />
             </Show>
         </li>
     );
