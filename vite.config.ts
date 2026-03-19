@@ -4,7 +4,7 @@ import path from "node:path";
 import process from "node:process";
 
 import tailwindcss from "@tailwindcss/vite";
-// import devtools from "solid-devtools/vite";
+import devtools from "solid-devtools/vite";
 import { defineConfig, loadEnv, type Rollup } from "vite";
 import solidPlugin from "vite-plugin-solid";
 
@@ -23,23 +23,15 @@ function labData(): Rollup.Plugin {
         name: "lab-data",
         // Generate module from 'data/data.xlsx'
         async buildStart(_options) {
-            if (process.env.USE_DUMMY_LABDATA) return null;
+            if (process.env.USE_DUMMY_LABDATA) return;
+            // TODO: Generate actual data
         },
         // Resolve module name
         async resolveId(source, _importer, _options) {
             if (source === module_name) {
-                return source;
+                return dummy_data_path;
             }
             return null;
-        },
-        // Loads source code
-        async load(id, _options) {
-            if (id !== module_name) return null;
-            if (process.env.USE_DUMMY_LABDATA) {
-                const content = await readFile(dummy_data_path, "utf-8");
-                this.info("loaded dummy data");
-                return content;
-            }
         },
     };
 }
@@ -49,14 +41,9 @@ export default defineConfig(({ mode }) => {
     return {
         plugins: [
             labData(),
-            // devtools({
-            //   autoname: true,
-            //   locator: {
-            //     targetIDE: ({ file }: DevtoolsPluginOptions) => `file://${__dirname}/${file}`,
-            //     jsxLocation: true,
-            //     componentLocation: true,
-            //   },
-            // }),
+            devtools({
+                autoname: true,
+            }),
             solidPlugin(),
             tailwindcss(),
         ],

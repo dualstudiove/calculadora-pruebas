@@ -13,7 +13,8 @@
         "moduleResolution": "bundler",
         "noEmit": true,
         "paths": {
-            "@root/*": ["./src/*"]
+            "@root/*": ["./src/*"],
+            "lab-data": ["./data/lab-data.meta.ts"]
         },
 
         // Type resolution & Safety

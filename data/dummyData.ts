@@ -1,4 +1,4 @@
-import type { Exam, MenuItem, Profile } from "@root/lab";
+import type { Exam, ExamProfile, Profile } from "@root/lab";
 
 // biome-ignore format: too distracting otherwise
 const first_names: string[] = [
@@ -49,7 +49,7 @@ const makeExam = (): Exam => {
         name: randomName(),
         price: randInt(200),
         aliases: randomCollection(randomName, 2),
-        category: undefined,
+        category: "C",
     };
 };
 
@@ -59,15 +59,17 @@ let id_profile = 0;
 const makeProfile = (): Profile => {
     id_profile += 1;
 
+    let total_price = 0;
     const ids = [];
     for (let i = 0; i < 10; i += 1) {
         if (coinChance()) {
-            const exam_id = choose(exams).id;
-            ids.push(exam_id);
+            const exam_idx = randInt(exams.length);
+            ids.push(exam_idx);
+            total_price += exams[exam_idx].price;
         }
     }
 
-    let special_price: number | undefined;
+    let special_price: number | null = null;
     if (coinChance()) {
         special_price = randInt(200);
     }
@@ -75,15 +77,16 @@ const makeProfile = (): Profile => {
     return {
         id: id_profile.toString(),
         name: `PRO ${randomName()}`,
-        examIds: ids,
+        exams_indexes: ids,
         aliases: undefined,
-        specialPrice: special_price,
+        total_price: total_price,
+        special_price: special_price,
     };
 };
 
 const profiles = randomCollection(makeProfile, 10);
 
-const final: MenuItem[] = [];
+const final: ExamProfile[] = [];
 for (const exam of exams) {
     final.push({ exam: exam });
 }
@@ -91,8 +94,5 @@ for (const profile of profiles) {
     final.push({ profile: profile });
 }
 
-const final_list = final;
-
-shuffle(final_list);
-
-export default final_list;
+// shuffle(final);
+export const data = final;
