@@ -20,7 +20,7 @@ const LeftList: Component<{
 }> = (props) => (
     <div class="flex-1 overflow-y-auto pr-2 custom-scrollbar">
         <Show
-            when={props.shownItems().length !== 0}
+            when={props.shownItems().length > 0}
             fallback={props.noItemsPlaceholder}
         >
             <ul class="space-y-3">
@@ -92,10 +92,10 @@ const Card: Component<{
                     </span>
                 </div>
             </div>
-            <Show when={aliases().length !== 0}>
+            <Show when={aliases().length > 0}>
                 <AlsoKnownAs aliases={aliases()} />
             </Show>
-            <Show when={profile()}>
+            <Show when={kind() === "Profile"}>
                 <IncludeProfileExams count={asProfile(examProfile()).exams_indexes.length} />
             </Show>
         </li>

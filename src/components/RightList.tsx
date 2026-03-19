@@ -118,6 +118,8 @@ const ExpandableProfileInfo: Component<{ profile: Profile }> = (props) => {
             })
             .join(", ");
 
+    //-- Components -----------------------------------------------------------------------------
+
     const ExpandedInfo = () => (
         <div class="text-xs text-slate-600 bg-slate-100 p-2 rounded mt-2">
             <span class="font-medium block mb-1">Incluye:</span>
