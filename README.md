@@ -1,20 +1,17 @@
 <div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+<img width="150" height="150" alt="GHBanner" src="https://github.com/user-attachments/assets/59cd138d-66e9-44d7-b209-8521215cbe6d" />
 </div>
 
-# Run and deploy your AI Studio app
+# Calculadora de pruebas 📲💉
 
-This contains everything you need to run your app locally.
+## Aplicacion
 
-View your app in AI Studio: https://ai.studio/apps/61b791db-2d42-464a-8435-89c81ed30350
+**Prerequisitos:**  [Node.js](https://nodejs.org), [pnpm](https://pnpm.io/)
 
-## Run Locally
-
-**Prerequisites:**  Node.js
-
-
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+- Instalar dependencies:
+   `pnpm install`
+- Establece la url base con `BASE_URL` en [.env.local](.env.local)
+- Ejecuta la aplicacion:
+   `pnpm run watch`
+- O compila la aplicacion:
+   `pnpm run build`
