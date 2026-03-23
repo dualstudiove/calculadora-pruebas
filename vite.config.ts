@@ -44,7 +44,7 @@ function labDataFromWorkBook(wb: xlsx.WorkBook): LabData {
 
     const data_result: ExamProfile[] = [];
     for (const exam_wb of exams_wb) {
-        const category = exam_wb.category?.slice(0, 1) as ExamCategory | undefined;
+        const category = exam_wb.category?.split(":")?.[0] as ExamCategory | undefined;
         const exam: Exam = {
             id: exam_wb.id.toString(),
             name: exam_wb.name,
