@@ -23,6 +23,8 @@ concurrency:
 jobs:
   # Single deploy job since we're just deploying
   deploy:
+    env:
+      BASE_URL: ${{ vars.BASE_URL }}
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -41,8 +43,6 @@ jobs:
         run: pnpm install
       - name: build website
         run: pnpm run ci
-        env:
-          BASE_URL: ${{ env.BASE_URL }}
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
