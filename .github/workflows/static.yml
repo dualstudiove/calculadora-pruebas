@@ -42,7 +42,7 @@ jobs:
       - name: build website
         run: pnpm run ci
         env:
-          USE_DUMMY_LABDATA: 1
+          BASE_URL: ${{ env.BASE_URL }}
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
