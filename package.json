@@ -26,6 +26,7 @@
         "solid-devtools": "^0.34.5",
         "tailwindcss": "^4.2.1",
         "vite": "^6.2.0",
-        "vite-plugin-solid": "^2.11.10"
+        "vite-plugin-solid": "^2.11.10",
+        "xlsx": "^0.18.5"
     }
 }

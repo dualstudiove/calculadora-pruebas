@@ -81,35 +81,3 @@ export class InspectExamProfile {
         }
     }
 }
-
-// export const getExamProfile = (index: DataIndex) => internal_data[index];
-//
-// const getUnionRuntime = (item: ExamProfile): Exam | Profile =>
-//     item.exam ?? item.profile ?? (undefined as never);
-//
-// export const getKind = (item: ExamProfile): "Exam" | "Profile" => {
-//     if (item.exam !== undefined) {
-//         return "Exam";
-//     } else if (item.profile !== undefined) {
-//         return "Profile";
-//     } else {
-//         throw new Error("Expected Exam or Profile type");
-//     }
-// };
-//
-// export const asExam = (item: ExamProfile) => item.exam as Exam;
-//
-// export const asProfile = (item: ExamProfile) => item.profile as Profile;
-//
-// export const itemName = (item: ExamProfile) => getUnionRuntime(item).name;
-//
-// export const itemAliases = (item: ExamProfile) => getUnionRuntime(item).aliases;
-//
-// export const getEffectivePrice = (item: ExamProfile) => {
-//     if (getKind(item) === "Exam") {
-//         return asExam(item).price;
-//     } else {
-//         const p = asProfile(item);
-//         return p.special_price ?? p.total_price;
-//     }
-// };
