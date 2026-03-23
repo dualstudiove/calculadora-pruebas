@@ -56,19 +56,21 @@ function labDataFromWorkBook(wb: xlsx.WorkBook): LabData {
     }
     for (const profile_wb of profiles_wb) {
         // Fix differences with workbook
-        const indexes = (profile_wb.examIds || "").split(",");
+        const indexes_wb = (profile_wb.examIds || "").split(",");
+        const runtime_indexes: number[] = [];
         let total_price = 0;
 
-        for (const id of indexes) {
-            const exam_profile = data_result.find((e) => (e.exam as Exam).id === id);
-            assert(exam_profile, `Exam 'id=${id}' does not exists`);
-            total_price += (exam_profile.exam as Exam).price;
+        for (const id_wb of indexes_wb) {
+            const index = data_result.findIndex((e) => (e.exam as Exam).id === id_wb);
+            assert(index !== -1, `Exam 'id=${id_wb}' does not exists`);
+            total_price += (data_result[index].exam as Exam).price;
+            runtime_indexes.push(index);
         }
 
         const profile: Profile = {
             id: profile_wb.id.toString(),
             name: profile_wb.name,
-            exams_indexes: indexes.map(Number),
+            exams_indexes: runtime_indexes,
             aliases: profile_wb.aliases?.split(","),
             total_price: total_price,
             special_price: profile_wb.specialPrice,
