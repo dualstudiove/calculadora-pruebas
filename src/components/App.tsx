@@ -4,15 +4,19 @@ import { data_last_updated, InspectExamProfile, data as lab_data } from "@root/l
 // import Bcv from "./external-apis/Bcv";
 // import ILovePdf from "./external-apis/ILovePdf";
 
-import { extract as fuzzExtract, token_set_ratio } from "fuzzball";
+import { extract as fuzzExtract, token_set_ratio as fuzzingAlgorithm } from "fuzzball";
 import { FileDown, Search, Trash2 } from "lucide-solid";
 import type { Component } from "solid-js";
-import { createEffect, createSignal, Show } from "solid-js";
+import { createEffect, createMemo, createSignal, Show } from "solid-js";
 import { createStore } from "solid-js/store";
 import LeftList from "./LeftList";
 import RightList from "./RightList";
 
-const range = (n: number) => Array(n).keys();
+function* range(min: number, max: number, step: number = 1) {
+    for (let i = min; i < max; i += step) {
+        yield i;
+    }
+}
 
 const App: Component = (_props) => {
     const lastUpdated = () => data_last_updated;
@@ -31,23 +35,44 @@ const App: Component = (_props) => {
 
     // Items showed (left)
     const shownItems = (): DataIndex[] =>
-        Array.from(range(lab_data.length).filter((index) => !selectedItems.includes(index)));
+        range(0, lab_data.length)
+            // This filter is O(n) in worse case but makes the implementation simpler
+            // We are dealing with at most 100 items anyway
+            .filter((index) => !selectedItems.includes(index))
+            .toArray();
 
-    const shownItemsSearchResult = () => {
+    const shownItemsSearchResult = createMemo<DataIndex[]>(() => {
+        // Dependencies
         const query = searchQuery();
         const items = shownItems();
+
+        const distance_from_highest_score = 50;
         if (query.length === 0) {
             return items;
         }
 
         const fuzz_result = fuzzExtract(query, items, {
-            scorer: token_set_ratio,
-            processor: (exam_profile) => new InspectExamProfile(exam_profile).name(),
+            scorer: (query: string, choice: DataIndex, opts) => {
+                const exam_profile = new InspectExamProfile(choice);
+                const score_name = fuzzingAlgorithm(query, exam_profile.name());
+                const score_alias = exam_profile
+                    .aliases()
+                    ?.map((alias) => fuzzingAlgorithm(query, alias, opts))
+                    .reduce((prev, newer) => Math.max(prev, newer));
+
+                return Math.max(score_name, score_alias || 0);
+            },
+            sortBySimilarity: true,
         });
-        const result = fuzz_result.map(([choice, _score, _index]) => choice);
-        console.debug("fuzz result:", result);
+        console.debug("fuzz result:", fuzz_result);
+        const highest_score = fuzz_result[0][1];
+        const result = fuzz_result
+            .filter(
+                ([_choice, score, _index]) => highest_score - score < distance_from_highest_score,
+            )
+            .map(([choice, _score, _index]) => choice);
         return result;
-    };
+    });
 
     const totalPrice = () =>
         selectedItems
@@ -90,7 +115,7 @@ const App: Component = (_props) => {
                     class="block w-full pl-10 pr-3 py-3 border border-slate-300 rounded-xl leading-5 bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm transition-shadow shadow-sm"
                     placeholder={props.placeholder}
                     value={searchQuery()}
-                    onChange={(e) => {
+                    onInput={(e) => {
                         const query = e.target.value;
                         console.debug(`search: ${query}`);
                         setSearchQuery(query);
