@@ -6,11 +6,12 @@ import { data_last_updated, InspectExamProfile, data as lab_data } from "@root/l
 
 import { extract as fuzzExtract, token_set_ratio as fuzzingAlgorithm } from "fuzzball";
 import { FileDown, Search, Trash2 } from "lucide-solid";
-import type { Component } from "solid-js";
-import { createEffect, createMemo, createSignal, Show } from "solid-js";
+import type { Component, ParentComponent } from "solid-js";
+import { children, createEffect, createMemo, createSignal, Show, splitProps } from "solid-js";
 import { createStore } from "solid-js/store";
 import LeftList from "./LeftList";
 import RightList from "./RightList";
+import SearchBarInput from "./SearchBarInput";
 
 function* range(min: number, max: number, step: number = 1) {
     for (let i = min; i < max; i += step) {
@@ -18,11 +19,20 @@ function* range(min: number, max: number, step: number = 1) {
     }
 }
 
+const KeyShortcutSpan: ParentComponent<{ key: string }> = (props) => {
+    const getChildren = children(() => props.children);
+    return (
+        <span class="flex items-center gap-1">
+            <kbd class="bg-slate-100 border border-slate-300 rounded px-1.5 py-0.5 text-xs font-mono">
+                {props.key}
+            </kbd>
+            &nbsp;
+            {getChildren()}
+        </span>
+    );
+};
+
 const App: Component = (_props) => {
-    const lastUpdated = () => data_last_updated;
-
-    //-- Signals & reactives --------------------------------------------------------------------
-
     // Search query
     const [searchQuery, setSearchQuery] = createSignal<string>("");
     // Items selected (right)
@@ -91,40 +101,6 @@ const App: Component = (_props) => {
 
     //-- Components -----------------------------------------------------------------------------
 
-    const KbdSpan: Component<{ key: string; tag: string }> = (props) => {
-        return (
-            <span class="flex items-center gap-1">
-                <kbd class="bg-slate-100 border border-slate-300 rounded px-1.5 py-0.5 text-xs font-mono">
-                    {props.key}
-                </kbd>
-                {` ${props.tag}`}
-            </span>
-        );
-    };
-
-    const SearchBarDiv: Component<{ placeholder: string }> = (props) => {
-        // TODO: Add ref for key 's'
-        // TODO: Go down on key down ( onKeyDown={handleSearchKeyDown} )
-        return (
-            <div class="relative mb-6">
-                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <Search class="h-5 w-5 text-slate-400" />
-                </div>
-                <input
-                    type="text"
-                    class="block w-full pl-10 pr-3 py-3 border border-slate-300 rounded-xl leading-5 bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm transition-shadow shadow-sm"
-                    placeholder={props.placeholder}
-                    value={searchQuery()}
-                    onInput={(e) => {
-                        const query = e.target.value;
-                        console.debug(`search: ${query}`);
-                        setSearchQuery(query);
-                    }}
-                />
-            </div>
-        );
-    };
-
     const MenuLeft: Component = () => (
         <div class="w-full md:w-1/2 lg:w-7/12 p-6 md:p-8 flex flex-col border-r border-slate-200 bg-white h-screen overflow-hidden">
             <div class="mb-6 flex justify-between items-center">
@@ -133,31 +109,23 @@ const App: Component = (_props) => {
                         Buscar Exámenes y Perfiles
                     </h1>
                     <p class="text-sm text-slate-500 flex items-center gap-4 flex-wrap">
-                        <KbdSpan
-                            key="B"
-                            tag="Buscar"
-                        />
-                        <KbdSpan
-                            key="B"
-                            tag="Buscar"
-                        />
-                        <KbdSpan
-                            key="L"
-                            tag="Limpiar todo"
-                        />
-                        <KbdSpan
-                            key="↑↓"
-                            tag="Navegar"
-                        />
-                        <KbdSpan
-                            key="Enter"
-                            tag="Agregar"
-                        />
+                        <KeyShortcutSpan key="B">Buscar</KeyShortcutSpan>
+                        <KeyShortcutSpan key="L">Limpiar todo</KeyShortcutSpan>
+                        <KeyShortcutSpan key="↑↓">navegar</KeyShortcutSpan>
+                        <KeyShortcutSpan key="Enter">agregar</KeyShortcutSpan>{" "}
                     </p>
                 </div>
             </div>
 
-            <SearchBarDiv placeholder="Escriba el nombre del examen, perfil o alias..." />
+            <SearchBarInput
+                placeholder="Escriba el nombre del examen, perfil o alias..."
+                value={searchQuery()}
+                onInput={(e) => {
+                    const query = e.target.value;
+                    console.debug(`search: ${query}`);
+                    setSearchQuery(query);
+                }}
+            />
 
             <LeftList
                 shownItems={shownItemsSearchResult()}
@@ -219,7 +187,7 @@ const App: Component = (_props) => {
                     <div>
                         <p class="text-sm text-slate-500 mb-1">Total a pagar</p>
                         <p class="text-xs text-slate-400">
-                            Precios actualizados el: {lastUpdated()}
+                            Precios actualizados el: {data_last_updated}
                         </p>
                     </div>
                     <div class="text-right">

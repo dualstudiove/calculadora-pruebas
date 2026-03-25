@@ -73,26 +73,18 @@ const Card: Component<{
                 </div>
             </div>
             <Show when={has_aliases}>
-                <AlsoKnownAs aliases={aliases} />
+                <div class="text-sm text-slate-500">
+                    <span class="font-medium text-slate-600">También llamada:</span>
+                    {aliases.join(",")}
+                </div>
             </Show>
             <Show when={ep.kind === "Profile"}>
-                <IncludeProfileExams count={ep.asProfile().exams_indexes.length} />
+                <div class="text-xs text-slate-400 mt-1">
+                    Incluye {ep.asProfile().exams_indexes.length} exámenes
+                </div>
             </Show>
         </li>
     );
 };
-
-const AlsoKnownAs: Component<{ aliases: string[] }> = (props) => {
-    const aliases = props.aliases.join(", ");
-    return (
-        <div class="text-sm text-slate-500">
-            <span class="font-medium text-slate-600">También llamada:</span> {aliases}
-        </div>
-    );
-};
-
-const IncludeProfileExams: Component<{ count: number }> = (props) => (
-    <div class="text-xs text-slate-400 mt-1">Incluye {props.count} exámenes</div>
-);
 
 export default LeftList;
