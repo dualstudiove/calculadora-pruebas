@@ -7,7 +7,7 @@ import { data_last_updated, InspectExamProfile, data as lab_data } from "@root/l
 import { extract as fuzzExtract, token_set_ratio as fuzzingAlgorithm } from "fuzzball";
 import { FileDown, Search, Trash2 } from "lucide-solid";
 import type { Component, ParentComponent } from "solid-js";
-import { children, createEffect, createMemo, createSignal, Show, splitProps } from "solid-js";
+import { children, createEffect, createMemo, createSignal, Show } from "solid-js";
 import { createStore } from "solid-js/store";
 import LeftList from "./LeftList";
 import RightList from "./RightList";
